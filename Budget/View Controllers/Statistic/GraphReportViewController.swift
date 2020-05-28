@@ -1,0 +1,122 @@
+
+
+import UIKit
+
+class GraphReportViewController: UIViewController {
+
+    @IBOutlet weak var graphView: GraphView!
+    
+    @IBOutlet weak var tableView: UITableView!
+    
+    @IBOutlet weak var addButton: UIBarButtonItem!
+    
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
+    private var colorArr: [UIColor] = [.red, .label, .blue, .darkGray, .yellow, .green, .orange, .cyan, .magenta, .purple]
+    
+    private var compareObjects = [CompareObjectModel]()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        navigationController?.navigationBar.tintColor = .label
+        navigationItem.largeTitleDisplayMode = .never
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        let nib = UINib(nibName: "GraphReportTableViewCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: "graphReportTableViewCell")
+        tableView.tableFooterView = UIView()
+//        tableView.tableHeaderView?.inputAccessoryView
+        
+        activityIndicator.stopAnimating()
+        
+    }
+//
+    private func getPaymentsFor(filter: FiltersModel) {
+        activityIndicator.startAnimating()
+        DispatchQueue.global().async {
+            let payments = CoreDataManager.shared.loadConvertedPaymentsWith(filter: filter)
+            DispatchQueue.main.async {
+                self.activityIndicator.stopAnimating()
+                self.calculateCompareObjectAndUpdData(payments: payments)
+            }
+        }
+    }
+    
+    private func calculateCompareObjectAndUpdData(payments: [Payment]) {
+        var value = 0.0
+        for payment in payments {
+            value += payment.value
+        }
+        
+        guard let color = colorArr.randomElement() else {return}
+         guard let index = colorArr.firstIndex(of: color) else {return}
+            colorArr.remove(at: index)
+        
+        let compareObj = CompareObjectModel(category: "", subcategory: "", value: value, color: color)
+        compareObjects.append(compareObj)
+        
+        graphView.updateCompareData(compareObjects: compareObjects)
+        tableView.reloadData()
+    }
+//
+    private func presentFilters() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let filtersVC = storyboard.instantiateViewController(identifier: "FiltersViewControllerId") as! FiltersViewController
+        filtersVC.delegate = self
+        present(filtersVC, animated: true, completion: nil)
+    }
+    
+    
+// MARK ACTIONS
+
+
+    @IBAction func addButtonDidTap(_ sender: Any) {
+        presentFilters()
+    }
+    
+    
+
+}
+
+extension GraphReportViewController: FiltersViewControllerDelegate {
+    func filtersApplied(filters: FiltersModel) {
+        getPaymentsFor(filter: filters)
+        
+    }
+    
+    
+}
+
+extension GraphReportViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
+    
+    
+    
+    
+    
+    
+}
+
+extension GraphReportViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return compareObjects.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "graphReportTableViewCell") as! GraphReportTableViewCell
+        let compareObject = compareObjects[indexPath.row]
+        cell.setupCellFor(compareObject:compareObject)
+        return cell
+    }
+    
+    
+}

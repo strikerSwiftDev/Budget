@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="UserMessageView" customModule="Budget" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="250" height="24"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MuI-UL-hb8">
+                    <rect key="frame" x="0.0" y="2" width="250" height="20"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="MuI-UL-hb8" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="0Cv-yM-Jeb"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="MuI-UL-hb8" secondAttribute="trailing" id="4Jw-tO-H3B"/>
+                <constraint firstItem="MuI-UL-hb8" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="hy3-Rc-ubf"/>
+                <constraint firstItem="MuI-UL-hb8" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="mhC-FL-pRj"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="label" destination="MuI-UL-hb8" id="IEi-pd-mmo"/>
+            </connections>
+            <point key="canvasLocation" x="139" y="125"/>
+        </view>
+    </objects>
+</document>
