@@ -27,6 +27,9 @@ class GraphReportViewController: UIViewController {
         let nib = UINib(nibName: "GraphReportTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "graphReportTableViewCell")
         tableView.tableFooterView = UIView()
+        tableView.dragInteractionEnabled = true
+        tableView.dragDelegate = self
+        
 //        tableView.tableHeaderView?.inputAccessoryView
         
         activityIndicator.stopAnimating()
@@ -59,6 +62,10 @@ class GraphReportViewController: UIViewController {
         
         graphView.updateCompareData(compareObjects: compareObjects)
         tableView.reloadData()
+        
+        if colorArr.count == 0 {
+            setAddBtnDisabled()
+        }
     }
 //
     private func presentFilters() {
@@ -68,8 +75,35 @@ class GraphReportViewController: UIViewController {
         present(filtersVC, animated: true, completion: nil)
     }
     
+    private func deleteItem(num: Int) {
+        let item = compareObjects.remove(at: num)
+        graphView.updateCompareData(compareObjects: compareObjects)
+        colorArr.append(item.color)
+        
+        self.tableView.beginUpdates()
+        let indexPath = IndexPath(row: num, section: 0)
+        self.tableView.deleteRows(at: [indexPath], with: .automatic)
+        self.tableView.endUpdates()
+        
+        
+        tableView.reloadData()
+        
+        if colorArr.count > 0 {
+            setAddBtnEnabled()
+        }
+
+    }
     
-// MARK ACTIONS
+    private func setAddBtnDisabled() {
+        addButton.isEnabled = false
+    }
+    
+    private func setAddBtnEnabled() {
+        addButton.isEnabled = true
+
+    }
+    
+// MARK: ACTIONS
 
 
     @IBAction func addButtonDidTap(_ sender: Any) {
@@ -79,6 +113,8 @@ class GraphReportViewController: UIViewController {
     
 
 }
+
+//MARK: EXTENTIONS
 
 extension GraphReportViewController: FiltersViewControllerDelegate {
     func filtersApplied(filters: FiltersModel) {
@@ -98,11 +134,7 @@ extension GraphReportViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
-    
-    
-    
-    
-    
+
     
 }
 
@@ -118,5 +150,40 @@ extension GraphReportViewController: UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+
+        let item = compareObjects.remove(at: sourceIndexPath.row)
+        compareObjects.insert(item, at: destinationIndexPath.row)
+        graphView.updateCompareData(compareObjects: compareObjects)
+        tableView.reloadData()
+        
+    }
     
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        
+        let action = UIContextualAction(style: .normal, title: "Удалить") { [weak self] (action, view, handler) in
+            self!.deleteItem(num:indexPath.row)
+        }
+
+        action.backgroundColor = .red
+        
+        var configuration = UISwipeActionsConfiguration()
+        
+        configuration = UISwipeActionsConfiguration(actions: [action])
+        
+        configuration.performsFirstActionWithFullSwipe = false
+        return configuration
+    }
+    
+    
+    
+}
+
+extension GraphReportViewController: UITableViewDragDelegate {
+    func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
+        return [UIDragItem(itemProvider: NSItemProvider())]
+    }
+    
+       
 }

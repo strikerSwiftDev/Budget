@@ -17,6 +17,7 @@
 		F139B4BC2452A0EB00259C6A /* PaymentsGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F139B4BB2452A0EB00259C6A /* PaymentsGenerator.swift */; };
 		F16C01B7243B57AB0030608C /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16C01B6243B57AB0030608C /* MenuViewController.swift */; };
 		F16C01BA243B59380030608C /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F16C01B9243B59380030608C /* Settings.storyboard */; };
+		F1704C9624A6DA300070CE59 /* Statistic.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1704C9524A6DA300070CE59 /* Statistic.storyboard */; };
 		F1738ABB244F0227007392C2 /* FiltersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1738ABA244F0227007392C2 /* FiltersModel.swift */; };
 		F17957F3244CA55800399D39 /* ReportStatisticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17957F2244CA55800399D39 /* ReportStatisticViewController.swift */; };
 		F17957F6244D3EFB00399D39 /* GraphReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17957F5244D3EFB00399D39 /* GraphReportViewController.swift */; };
@@ -52,6 +53,7 @@
 		F139B4BB2452A0EB00259C6A /* PaymentsGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentsGenerator.swift; sourceTree = "<group>"; };
 		F16C01B6243B57AB0030608C /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		F16C01B9243B59380030608C /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
+		F1704C9524A6DA300070CE59 /* Statistic.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Statistic.storyboard; sourceTree = "<group>"; };
 		F1738ABA244F0227007392C2 /* FiltersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersModel.swift; sourceTree = "<group>"; };
 		F17957F2244CA55800399D39 /* ReportStatisticViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportStatisticViewController.swift; sourceTree = "<group>"; };
 		F17957F5244D3EFB00399D39 /* GraphReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphReportViewController.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 				F1A57CEF244BF551005514EA /* Main.storyboard */,
 				F16C01B9243B59380030608C /* Settings.storyboard */,
 				F1F646482426E92C00A343A4 /* LaunchScreen.storyboard */,
+				F1704C9524A6DA300070CE59 /* Statistic.storyboard */,
 			);
 			path = storyboards;
 			sourceTree = "<group>";
@@ -131,13 +134,21 @@
 			path = settings;
 			sourceTree = "<group>";
 		};
+		F1704C9724A6DF260070CE59 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				F1C4BBD2242817FE007F7452 /* PaymentViewController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
 		F17957F4244CA94400399D39 /* Statistic */ = {
 			isa = PBXGroup;
 			children = (
-				F1C4BBC62427FB03007F7452 /* StatisticViewController.swift */,
-				F17957F2244CA55800399D39 /* ReportStatisticViewController.swift */,
-				F17957F5244D3EFB00399D39 /* GraphReportViewController.swift */,
 				F135E095244A7C9900CA164A /* FiltersViewController.swift */,
+				F1C4BBC62427FB03007F7452 /* StatisticViewController.swift */,
+				F17957F5244D3EFB00399D39 /* GraphReportViewController.swift */,
+				F17957F2244CA55800399D39 /* ReportStatisticViewController.swift */,
 			);
 			path = Statistic;
 			sourceTree = "<group>";
@@ -202,9 +213,9 @@
 		F1F646532426EE8500A343A4 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				F1704C9724A6DF260070CE59 /* Main */,
 				F16C01BB243B65830030608C /* settings */,
 				F17957F4244CA94400399D39 /* Statistic */,
-				F1C4BBD2242817FE007F7452 /* PaymentViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -270,6 +281,7 @@
 				F1F6464A2426E92C00A343A4 /* LaunchScreen.storyboard in Resources */,
 				F1A57CF0244BF551005514EA /* Main.storyboard in Resources */,
 				F1F646472426E92C00A343A4 /* Assets.xcassets in Resources */,
+				F1704C9624A6DA300070CE59 /* Statistic.storyboard in Resources */,
 				F1240D33246033FA0063B789 /* GraphReportTableViewCell.xib in Resources */,
 				F111A6092433E1D2000F51E5 /* UserMessageView.xib in Resources */,
 				F16C01BA243B59380030608C /* Settings.storyboard in Resources */,

@@ -1,18 +1,9 @@
-//
-//  GraphView.swift
-//  Budget
-//
-//  Created by Anatoliy Anatolyev on 03.05.2020.
-//  Copyright © 2020 Anatoliy Anatolyev. All rights reserved.
-//
 
 import UIKit
 
 @IBDesignable
 
 class GraphView: UIView {
-
-//    private var paymentsArr = [(Float, UIColor)]()
     
     private var compareObjects = [CompareObjectModel]()
     
@@ -20,9 +11,14 @@ class GraphView: UIView {
     private let columnWidth: CGFloat = 5
     private var zeroPoint: CGPoint!
     
+    
+    private var columnOffset: CGFloat = 20.0
+    private let maxColumnLenth: CGFloat = 120.0
+    private let minColumnLength: CGFloat = 10.0
+    private var columnLengtMultipler: CGFloat = 1.0
    
     override func awakeFromNib() {
-//        print("!!!!!!!!!")
+        
     }
     
     func updateCompareData(compareObjects: [CompareObjectModel]) {
@@ -38,7 +34,8 @@ class GraphView: UIView {
                 myLayer.removeFromSuperlayer()
             }
         }
-//        paymentsArr = [(130, .blue), (60, . green), (100, .gray), (140, .orange), (90, .label), (130, .blue), (60, . green), (100, .gray), (140, .orange), (90, .label)]
+        
+//Background
         
         let startX: CGFloat = offset
         let endX = bounds.width - offset
@@ -75,19 +72,26 @@ class GraphView: UIView {
         layer.addSublayer(backgroundLayer2)
         
         
+//Foreground
         
+        guard compareObjects.count > 0 else {return}
+        
+        guard let maxValue = compareObjects.map({ $0.value }).max() else {return}
         
         var iteration = 1
-        
+
         for compareObj in compareObjects {
             
             let paymentsLayer = CAShapeLayer()
             let paymentsPath = UIBezierPath()
             
-            let x0 = startX + CGFloat(20.0) * CGFloat((iteration))
-//            let y1 = startY - CGFloat(value)
-            let y1 = startY - 100
-            
+            let x0 = startX + columnOffset * CGFloat((iteration))
+            let multipler = compareObj.value / maxValue
+            var y1 = startY - maxColumnLenth * CGFloat(multipler)
+            if y1 < minColumnLength {
+                y1 = minColumnLength
+            }
+
             paymentsPath.move(to: CGPoint(x: x0, y: startY))
             paymentsPath.addLine(to: CGPoint(x: x0, y: y1))
 
@@ -97,6 +101,15 @@ class GraphView: UIView {
             paymentsLayer.strokeEnd = 1
             layer.addSublayer(paymentsLayer)
             
+            let animation = CABasicAnimation(keyPath: "strokeEnd")
+            animation.duration = 0.33
+            animation.fromValue = 0
+            animation.toValue = 1
+            
+            animation.timingFunction = CAMediaTimingFunction(name: .easeOut)
+            
+            paymentsLayer.add(animation, forKey: "lessAnimation")
+
             iteration += 1
             
         }

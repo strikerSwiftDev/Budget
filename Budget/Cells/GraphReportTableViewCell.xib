@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -16,26 +16,29 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bph-DM-MtD">
-                        <rect key="frame" x="16" y="40" width="253" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bph-DM-MtD">
+                        <rect key="frame" x="16" y="4" width="71" height="36"/>
                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GUl-4T-gPb" customClass="GraphReportTableViewCell" customModule="Budget" customModuleProvider="target">
-                        <rect key="frame" x="299" y="10" width="20" height="80"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <rect key="frame" x="280" y="10" width="20" height="80"/>
+                        <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="20" id="VVI-s6-beT"/>
                         </constraints>
                     </view>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="Bph-DM-MtD" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="GBq-Ec-TEG"/>
+                    <constraint firstItem="Bph-DM-MtD" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="fFM-hj-dF5"/>
+                </constraints>
             </tableViewCellContentView>
             <constraints>
                 <constraint firstItem="njF-e1-oar" firstAttribute="bottom" secondItem="GUl-4T-gPb" secondAttribute="bottom" constant="10" id="8KH-pQ-7xF"/>
                 <constraint firstItem="GUl-4T-gPb" firstAttribute="top" secondItem="njF-e1-oar" secondAttribute="top" constant="10" id="CzY-Zf-rxS"/>
-                <constraint firstItem="njF-e1-oar" firstAttribute="trailing" secondItem="GUl-4T-gPb" secondAttribute="trailing" constant="1" id="b9n-E5-Wtg"/>
+                <constraint firstItem="njF-e1-oar" firstAttribute="trailing" secondItem="GUl-4T-gPb" secondAttribute="trailing" constant="20" id="b9n-E5-Wtg"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>

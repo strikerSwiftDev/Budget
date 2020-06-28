@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Imc-UU-SWh">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Graph Report View Controller-->
+        <scene sceneID="oIG-JN-s3K">
+            <objects>
+                <viewController id="FrO-gy-RU0" customClass="GraphReportViewController" customModule="Budget" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZV4-gT-pmA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jgz-sB-FSw" customClass="GraphView" customModule="Budget" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44" width="375" height="150"/>
+                                <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="oLv-0g-rHM"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" sectionIndexMinimumDisplayRowCount="-1" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NRu-DK-qNI">
+                                <rect key="frame" x="0.0" y="194" width="375" height="473"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="V2V-rS-zeO">
+                                <rect key="frame" x="169" y="315" width="37" height="37"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="QnL-Dd-Xcj" firstAttribute="trailing" secondItem="jgz-sB-FSw" secondAttribute="trailing" id="BdI-7A-QwQ"/>
+                            <constraint firstItem="jgz-sB-FSw" firstAttribute="leading" secondItem="QnL-Dd-Xcj" secondAttribute="leading" id="Hcx-jy-Xq9"/>
+                            <constraint firstItem="V2V-rS-zeO" firstAttribute="centerX" secondItem="ZV4-gT-pmA" secondAttribute="centerX" id="LPQ-CW-Qev"/>
+                            <constraint firstItem="QnL-Dd-Xcj" firstAttribute="bottom" secondItem="NRu-DK-qNI" secondAttribute="bottom" id="fr4-nb-cXn"/>
+                            <constraint firstItem="V2V-rS-zeO" firstAttribute="centerY" secondItem="ZV4-gT-pmA" secondAttribute="centerY" id="guw-c6-qYf"/>
+                            <constraint firstItem="jgz-sB-FSw" firstAttribute="top" secondItem="QnL-Dd-Xcj" secondAttribute="top" id="joO-r3-5wM"/>
+                            <constraint firstItem="NRu-DK-qNI" firstAttribute="leading" secondItem="QnL-Dd-Xcj" secondAttribute="leading" id="k36-6e-upd"/>
+                            <constraint firstItem="NRu-DK-qNI" firstAttribute="top" secondItem="jgz-sB-FSw" secondAttribute="bottom" id="kcc-gF-I2i"/>
+                            <constraint firstItem="QnL-Dd-Xcj" firstAttribute="trailing" secondItem="NRu-DK-qNI" secondAttribute="trailing" id="vJF-V2-IaC"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="QnL-Dd-Xcj"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="bHn-Js-HJw">
+                        <barButtonItem key="rightBarButtonItem" title="Добавить" id="gPO-vm-XHB">
+                            <connections>
+                                <action selector="addButtonDidTap:" destination="FrO-gy-RU0" id="Jjh-ln-aIq"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="activityIndicator" destination="V2V-rS-zeO" id="MP7-6Y-gd4"/>
+                        <outlet property="addButton" destination="gPO-vm-XHB" id="xJr-Z1-noU"/>
+                        <outlet property="graphView" destination="jgz-sB-FSw" id="QNc-vl-E67"/>
+                        <outlet property="tableView" destination="NRu-DK-qNI" id="auQ-kj-UUB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vp3-qZ-cNv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3023" y="1467"/>
+        </scene>
+        <!--Statistic-->
+        <scene sceneID="pSy-lu-21Y">
+            <objects>
+                <viewController title="Statistic" id="Ert-G0-Afy" customClass="StatisticViewController" customModule="Budget" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="FqG-Xi-Die">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="OEY-la-2rK">
+                                <rect key="frame" x="88" y="141" width="199" height="94"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y9Y-UO-0Lq">
+                                        <rect key="frame" x="75.5" y="0.0" width="48" height="32"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                        <state key="normal" title="Отчет">
+                                            <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="nrL-jx-LS1" kind="show" id="ezW-pl-Jos"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iN5-L6-SWC">
+                                        <rect key="frame" x="0.0" y="62" width="199" height="32"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                        <state key="normal" title="Графическое сравнение">
+                                            <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="FrO-gy-RU0" kind="show" id="xAA-oH-ybU"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YBE-OL-XVa">
+                                <rect key="frame" x="101" y="479" width="173" height="30"/>
+                                <state key="normal" title="Generate 1000 payments"/>
+                                <connections>
+                                    <action selector="loadPayments:" destination="Ert-G0-Afy" eventType="touchUpInside" id="13i-c4-Xgj"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="YBE-OL-XVa" firstAttribute="centerX" secondItem="vnC-TV-5Hb" secondAttribute="centerX" id="0V5-fT-7jv"/>
+                            <constraint firstItem="OEY-la-2rK" firstAttribute="centerX" secondItem="vnC-TV-5Hb" secondAttribute="centerX" id="Jpu-Ef-jrb"/>
+                            <constraint firstItem="OEY-la-2rK" firstAttribute="top" secondItem="vnC-TV-5Hb" secondAttribute="top" constant="97" id="TNc-Fv-RSJ"/>
+                            <constraint firstItem="YBE-OL-XVa" firstAttribute="centerY" secondItem="vnC-TV-5Hb" secondAttribute="centerY" constant="138.5" id="cMB-W1-mPV"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="vnC-TV-5Hb"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Статистика" largeTitleDisplayMode="always" id="rMq-GJ-PsH"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NNo-uT-rfI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2213" y="1251"/>
+        </scene>
+        <!--Статистика-->
+        <scene sceneID="d37-XQ-axZ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Imc-UU-SWh" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Статистика" image="icons8-веб-аналитика-30" selectedImage="icons8-веб-аналитика-30" id="nB7-zn-Va2"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="XhJ-b9-FeP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Ert-G0-Afy" kind="relationship" relationship="rootViewController" id="ZEG-RV-OWc"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DYc-3f-IzB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2212.5" y="455.28169014084506"/>
+        </scene>
+        <!--Отчет-->
+        <scene sceneID="sYy-0Z-y6k">
+            <objects>
+                <viewController id="nrL-jx-LS1" customClass="ReportStatisticViewController" customModule="Budget" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Z4w-T4-dbS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ecv-3n-wmt">
+                                <rect key="frame" x="0.0" y="75" width="375" height="120"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="l6S-gJ-LT3">
+                                        <rect key="frame" x="169" y="41.5" width="37" height="37"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="l6S-gJ-LT3" firstAttribute="centerY" secondItem="ecv-3n-wmt" secondAttribute="centerY" id="GM2-VF-oP7"/>
+                                    <constraint firstAttribute="height" constant="120" id="d39-bo-Abg"/>
+                                    <constraint firstItem="l6S-gJ-LT3" firstAttribute="centerX" secondItem="ecv-3n-wmt" secondAttribute="centerX" id="ttH-XB-skn"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Mnd-Na-N9F">
+                                <rect key="frame" x="0.0" y="195" width="375" height="472"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="eIw-kr-fxe">
+                                <rect key="frame" x="0.0" y="44" width="375" height="32"/>
+                                <segments>
+                                    <segment title="Этот месяц"/>
+                                    <segment title="Эта неделя"/>
+                                    <segment title="Фильтр"/>
+                                </segments>
+                                <connections>
+                                    <action selector="selectorChanged:" destination="nrL-jx-LS1" eventType="valueChanged" id="MZI-0q-5U8"/>
+                                </connections>
+                            </segmentedControl>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="n4n-Ab-z6e">
+                                <rect key="frame" x="169" y="337" width="37" height="37"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="n4n-Ab-z6e" firstAttribute="centerX" secondItem="BrJ-W6-pMi" secondAttribute="centerX" id="BWD-sd-gY7"/>
+                            <constraint firstItem="BrJ-W6-pMi" firstAttribute="bottom" secondItem="Mnd-Na-N9F" secondAttribute="bottom" id="FPe-Vd-VdS"/>
+                            <constraint firstItem="BrJ-W6-pMi" firstAttribute="trailing" secondItem="ecv-3n-wmt" secondAttribute="trailing" id="I8K-rN-tS4"/>
+                            <constraint firstItem="BrJ-W6-pMi" firstAttribute="trailing" secondItem="Mnd-Na-N9F" secondAttribute="trailing" id="Lah-ac-UW4"/>
+                            <constraint firstItem="BrJ-W6-pMi" firstAttribute="trailing" secondItem="eIw-kr-fxe" secondAttribute="trailing" id="Oil-vJ-9q3"/>
+                            <constraint firstItem="ecv-3n-wmt" firstAttribute="leading" secondItem="BrJ-W6-pMi" secondAttribute="leading" id="QC2-rt-jB1"/>
+                            <constraint firstItem="eIw-kr-fxe" firstAttribute="top" secondItem="BrJ-W6-pMi" secondAttribute="top" id="Rry-Bc-uiV"/>
+                            <constraint firstItem="Mnd-Na-N9F" firstAttribute="leading" secondItem="BrJ-W6-pMi" secondAttribute="leading" id="WCc-4G-5wx"/>
+                            <constraint firstItem="ecv-3n-wmt" firstAttribute="top" secondItem="eIw-kr-fxe" secondAttribute="bottom" id="Ych-9M-UfL"/>
+                            <constraint firstItem="n4n-Ab-z6e" firstAttribute="centerY" secondItem="BrJ-W6-pMi" secondAttribute="centerY" id="bDD-e7-egk"/>
+                            <constraint firstItem="eIw-kr-fxe" firstAttribute="leading" secondItem="BrJ-W6-pMi" secondAttribute="leading" id="ffL-Dp-IIZ"/>
+                            <constraint firstItem="Mnd-Na-N9F" firstAttribute="top" secondItem="ecv-3n-wmt" secondAttribute="bottom" id="uBh-0V-BEv"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="BrJ-W6-pMi"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Отчет" id="vR1-A1-iEm">
+                        <barButtonItem key="rightBarButtonItem" title="Фильтр" id="fyM-Mi-hwF">
+                            <connections>
+                                <action selector="filtersButtonDidTap:" destination="nrL-jx-LS1" id="Oq0-vl-7Ly"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="filterBtn" destination="fyM-Mi-hwF" id="y1j-1O-BLY"/>
+                        <outlet property="reportActivityIndicator" destination="l6S-gJ-LT3" id="Bwe-ou-4th"/>
+                        <outlet property="reportTableView" destination="Mnd-Na-N9F" id="jAN-1p-wVp"/>
+                        <outlet property="selector" destination="eIw-kr-fxe" id="VZ7-2E-X0t"/>
+                        <outlet property="tableViewActivityIndicator" destination="n4n-Ab-z6e" id="KPv-Pw-ZkK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="U2I-iN-lQg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3023" y="748"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="icons8-веб-аналитика-30" width="30" height="30"/>
+    </resources>
+</document>

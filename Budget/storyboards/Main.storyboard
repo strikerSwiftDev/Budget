@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9H6-ap-lbf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9H6-ap-lbf">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -133,117 +133,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qzg-N7-2gw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1373" y="456"/>
-        </scene>
-        <!--Graph Report View Controller-->
-        <scene sceneID="gHf-r8-OIO">
-            <objects>
-                <viewController id="ICV-Xt-XwJ" customClass="GraphReportViewController" customModule="Budget" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="DbM-wo-aAR">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gop-Yx-gc9" customClass="GraphView" customModule="Budget" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44" width="320" height="150"/>
-                                <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="150" id="Zzk-Mh-USN"/>
-                                </constraints>
-                            </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" sectionIndexMinimumDisplayRowCount="-1" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fQs-Qb-jvC">
-                                <rect key="frame" x="0.0" y="194" width="320" height="325"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                            </tableView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="zTo-1q-L42">
-                                <rect key="frame" x="141.5" y="265.5" width="37" height="37"/>
-                            </activityIndicatorView>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="fQs-Qb-jvC" firstAttribute="leading" secondItem="qpu-gA-1gd" secondAttribute="leading" id="7ar-yM-Pec"/>
-                            <constraint firstItem="Gop-Yx-gc9" firstAttribute="leading" secondItem="qpu-gA-1gd" secondAttribute="leading" id="ATA-py-56u"/>
-                            <constraint firstItem="qpu-gA-1gd" firstAttribute="trailing" secondItem="fQs-Qb-jvC" secondAttribute="trailing" id="Fl5-Id-04G"/>
-                            <constraint firstItem="qpu-gA-1gd" firstAttribute="trailing" secondItem="Gop-Yx-gc9" secondAttribute="trailing" id="Nbc-7r-Vk9"/>
-                            <constraint firstItem="zTo-1q-L42" firstAttribute="centerX" secondItem="DbM-wo-aAR" secondAttribute="centerX" id="Nmg-xv-87a"/>
-                            <constraint firstItem="qpu-gA-1gd" firstAttribute="bottom" secondItem="fQs-Qb-jvC" secondAttribute="bottom" id="cfd-Cd-DA6"/>
-                            <constraint firstItem="Gop-Yx-gc9" firstAttribute="top" secondItem="qpu-gA-1gd" secondAttribute="top" id="gkm-gF-yVJ"/>
-                            <constraint firstItem="fQs-Qb-jvC" firstAttribute="top" secondItem="Gop-Yx-gc9" secondAttribute="bottom" id="iPp-3x-kyi"/>
-                            <constraint firstItem="zTo-1q-L42" firstAttribute="centerY" secondItem="DbM-wo-aAR" secondAttribute="centerY" id="yHJ-ki-GnZ"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="qpu-gA-1gd"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="xVf-v6-Quo">
-                        <barButtonItem key="rightBarButtonItem" title="Добавить" id="H6s-FD-kJG">
-                            <connections>
-                                <action selector="addButtonDidTap:" destination="ICV-Xt-XwJ" id="gK7-hv-NLg"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="activityIndicator" destination="zTo-1q-L42" id="QsD-pY-EMB"/>
-                        <outlet property="addButton" destination="H6s-FD-kJG" id="PPC-mG-0Uu"/>
-                        <outlet property="graphView" destination="Gop-Yx-gc9" id="vj3-Eb-H5N"/>
-                        <outlet property="tableView" destination="fQs-Qb-jvC" id="mk1-rZ-SE1"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Utk-KT-YgE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3023" y="1467"/>
-        </scene>
-        <!--Statistic-->
-        <scene sceneID="dQB-ML-BIx">
-            <objects>
-                <viewController title="Statistic" id="u2g-HE-0uz" customClass="StatisticViewController" customModule="Budget" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="oyN-U9-nUe">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="pDO-ne-nhi">
-                                <rect key="frame" x="60.5" y="141" width="199" height="94"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fh6-tY-pKN">
-                                        <rect key="frame" x="75.5" y="0.0" width="48" height="32"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                        <state key="normal" title="Отчет">
-                                            <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        </state>
-                                        <connections>
-                                            <segue destination="Sz1-aM-jJ8" kind="show" id="ALT-nY-u2o"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e7J-0J-oHn">
-                                        <rect key="frame" x="0.0" y="62" width="199" height="32"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                        <state key="normal" title="Графическое сравнение">
-                                            <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        </state>
-                                        <connections>
-                                            <segue destination="ICV-Xt-XwJ" kind="show" id="u7O-5O-vRB"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="71n-T3-kV4">
-                                <rect key="frame" x="73.5" y="405" width="173" height="30"/>
-                                <state key="normal" title="Generate 1000 payments"/>
-                                <connections>
-                                    <action selector="loadPayments:" destination="u2g-HE-0uz" eventType="touchUpInside" id="0Cf-Nt-nFb"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="pDO-ne-nhi" firstAttribute="centerX" secondItem="lLv-Rs-ebd" secondAttribute="centerX" id="BNo-lH-uc9"/>
-                            <constraint firstItem="71n-T3-kV4" firstAttribute="centerY" secondItem="lLv-Rs-ebd" secondAttribute="centerY" constant="138.5" id="Tyq-eM-c6P"/>
-                            <constraint firstItem="71n-T3-kV4" firstAttribute="centerX" secondItem="lLv-Rs-ebd" secondAttribute="centerX" id="gDN-YC-aNd"/>
-                            <constraint firstItem="pDO-ne-nhi" firstAttribute="top" secondItem="lLv-Rs-ebd" secondAttribute="top" constant="97" id="mBN-wI-8fk"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="lLv-Rs-ebd"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Статистика" largeTitleDisplayMode="always" id="rMS-eD-2tK"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1VT-Pz-gW6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2213" y="1251"/>
         </scene>
         <!--Filters View Controller-->
         <scene sceneID="oyV-eU-1lw">
@@ -382,7 +271,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E2R-6V-3Xy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2432" y="2472"/>
+            <point key="canvasLocation" x="1918" y="1326"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="XeI-hT-wnZ">
@@ -398,7 +287,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1rj-D0-pKb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3088" y="2304"/>
+            <point key="canvasLocation" x="2573" y="1158"/>
         </scene>
         <!--Settings-->
         <scene sceneID="L9B-NS-f3M">
@@ -409,6 +298,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="znE-FI-rOm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3400" y="-335"/>
+        </scene>
+        <!--Statistic-->
+        <scene sceneID="y4L-55-dWS">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Statistic" id="SCJ-IZ-BP0" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="FJT-oc-Cey"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZfY-Md-329" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3398" y="129"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="dD8-yX-dWh">
@@ -422,113 +321,16 @@
                     </tabBar>
                     <connections>
                         <segue destination="HKM-ZN-V5j" kind="relationship" relationship="viewControllers" id="VjT-QS-q22"/>
-                        <segue destination="Y37-V4-Rk1" kind="relationship" relationship="viewControllers" id="PmK-k7-RNd"/>
                         <segue destination="su8-59-fjt" kind="relationship" relationship="viewControllers" id="4l7-Yg-wdy"/>
+                        <segue destination="SCJ-IZ-BP0" kind="relationship" relationship="viewControllers" id="i66-lB-qd1"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rzj-PT-46M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2213" y="-334"/>
         </scene>
-        <!--Статистика-->
-        <scene sceneID="dxY-Nm-y3q">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Y37-V4-Rk1" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Статистика" image="icons8-веб-аналитика-30" selectedImage="icons8-веб-аналитика-30" id="8r7-dx-SRw"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Li2-SH-mwm">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="u2g-HE-0uz" kind="relationship" relationship="rootViewController" id="gfG-Gl-KeO"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="buW-fx-7gS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2212.5" y="455.28169014084506"/>
-        </scene>
-        <!--Отчет-->
-        <scene sceneID="APG-8L-woS">
-            <objects>
-                <viewController id="Sz1-aM-jJ8" customClass="ReportStatisticViewController" customModule="Budget" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8FU-FF-yrs">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="45X-wT-7F4">
-                                <rect key="frame" x="0.0" y="75" width="320" height="120"/>
-                                <subviews>
-                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="oRB-cc-cvx">
-                                        <rect key="frame" x="141.5" y="41.5" width="37" height="37"/>
-                                    </activityIndicatorView>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstItem="oRB-cc-cvx" firstAttribute="centerX" secondItem="45X-wT-7F4" secondAttribute="centerX" id="03N-3Y-cwr"/>
-                                    <constraint firstItem="oRB-cc-cvx" firstAttribute="centerY" secondItem="45X-wT-7F4" secondAttribute="centerY" id="Fdm-bW-S87"/>
-                                    <constraint firstAttribute="height" constant="120" id="Ikx-NV-lnn"/>
-                                </constraints>
-                            </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IPh-AH-DI5">
-                                <rect key="frame" x="0.0" y="195" width="320" height="324"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                            </tableView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="9Tk-KO-xql">
-                                <rect key="frame" x="0.0" y="44" width="320" height="32"/>
-                                <segments>
-                                    <segment title="Этот месяц"/>
-                                    <segment title="Эта неделя"/>
-                                    <segment title="Фильтр"/>
-                                </segments>
-                                <connections>
-                                    <action selector="selectorChanged:" destination="Sz1-aM-jJ8" eventType="valueChanged" id="nqL-EG-fv1"/>
-                                </connections>
-                            </segmentedControl>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="K67-Oe-3SH">
-                                <rect key="frame" x="141.5" y="263" width="37" height="37"/>
-                            </activityIndicatorView>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="IPh-AH-DI5" firstAttribute="top" secondItem="45X-wT-7F4" secondAttribute="bottom" id="2IW-gt-Gh2"/>
-                            <constraint firstItem="hWS-oZ-qim" firstAttribute="trailing" secondItem="45X-wT-7F4" secondAttribute="trailing" id="2pB-ii-oxc"/>
-                            <constraint firstItem="9Tk-KO-xql" firstAttribute="top" secondItem="hWS-oZ-qim" secondAttribute="top" id="35T-Es-6To"/>
-                            <constraint firstItem="K67-Oe-3SH" firstAttribute="centerX" secondItem="hWS-oZ-qim" secondAttribute="centerX" id="3ty-ut-Anx"/>
-                            <constraint firstItem="45X-wT-7F4" firstAttribute="leading" secondItem="hWS-oZ-qim" secondAttribute="leading" id="P9d-3w-Six"/>
-                            <constraint firstItem="hWS-oZ-qim" firstAttribute="trailing" secondItem="9Tk-KO-xql" secondAttribute="trailing" id="kkO-9s-eyN"/>
-                            <constraint firstItem="IPh-AH-DI5" firstAttribute="leading" secondItem="hWS-oZ-qim" secondAttribute="leading" id="mdT-JY-ivs"/>
-                            <constraint firstItem="45X-wT-7F4" firstAttribute="top" secondItem="9Tk-KO-xql" secondAttribute="bottom" id="riy-L6-5SE"/>
-                            <constraint firstItem="K67-Oe-3SH" firstAttribute="centerY" secondItem="hWS-oZ-qim" secondAttribute="centerY" id="tEu-GN-ksZ"/>
-                            <constraint firstItem="9Tk-KO-xql" firstAttribute="leading" secondItem="hWS-oZ-qim" secondAttribute="leading" id="vMh-7C-i57"/>
-                            <constraint firstItem="hWS-oZ-qim" firstAttribute="trailing" secondItem="IPh-AH-DI5" secondAttribute="trailing" id="xgi-EZ-x2I"/>
-                            <constraint firstItem="hWS-oZ-qim" firstAttribute="bottom" secondItem="IPh-AH-DI5" secondAttribute="bottom" id="yZi-Gk-TzR"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="hWS-oZ-qim"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Отчет" id="rY6-Tr-JRJ">
-                        <barButtonItem key="rightBarButtonItem" title="Фильтр" id="BBl-ZQ-bbG">
-                            <connections>
-                                <action selector="filtersButtonDidTap:" destination="Sz1-aM-jJ8" id="auX-1D-HRu"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="filterBtn" destination="BBl-ZQ-bbG" id="fIP-Ln-V8X"/>
-                        <outlet property="reportActivityIndicator" destination="oRB-cc-cvx" id="8bz-az-yrJ"/>
-                        <outlet property="reportTableView" destination="IPh-AH-DI5" id="yBD-3j-Dbg"/>
-                        <outlet property="selector" destination="9Tk-KO-xql" id="gyU-Cy-in9"/>
-                        <outlet property="tableViewActivityIndicator" destination="K67-Oe-3SH" id="EX0-xm-nxV"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nfS-2d-ddH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3023" y="748"/>
-        </scene>
     </scenes>
     <resources>
-        <image name="icons8-веб-аналитика-30" width="30" height="30"/>
         <image name="icons8-облигации" width="30" height="30"/>
     </resources>
 </document>
