@@ -42,12 +42,12 @@ class GraphReportViewController: UIViewController {
             let payments = CoreDataManager.shared.loadConvertedPaymentsWith(filter: filter)
             DispatchQueue.main.async {
                 self.activityIndicator.stopAnimating()
-                self.calculateCompareObjectAndUpdData(payments: payments)
+                self.calculateCompareObjectAndUpdData(payments: payments, filter: filter)
             }
         }
     }
     
-    private func calculateCompareObjectAndUpdData(payments: [Payment]) {
+    private func calculateCompareObjectAndUpdData(payments: [Payment], filter: FiltersModel) {
         var value = 0.0
         for payment in payments {
             value += payment.value
@@ -57,7 +57,13 @@ class GraphReportViewController: UIViewController {
          guard let index = colorArr.firstIndex(of: color) else {return}
             colorArr.remove(at: index)
         
-        let compareObj = CompareObjectModel(category: "", subcategory: "", value: value, color: color)
+        let category = filter.category
+        let subcategory = filter.subcategory
+        let type = filter.type
+        let fromDate = filter.fromDate ?? Consts.wrongDate
+        let toDate = filter.toDate ?? Consts.wrongDate
+        
+        let compareObj = CompareObjectModel(category: category, subcategory: subcategory, value: value, color: color, type: type, fromDate: fromDate, toDate: toDate)
         compareObjects.append(compareObj)
         
         graphView.updateCompareData(compareObjects: compareObjects)
@@ -86,7 +92,7 @@ class GraphReportViewController: UIViewController {
         self.tableView.endUpdates()
         
         
-        tableView.reloadData()
+//        tableView.reloadData()
         
         if colorArr.count > 0 {
             setAddBtnEnabled()

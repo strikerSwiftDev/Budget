@@ -15,7 +15,6 @@ class GraphView: UIView {
     private var columnOffset: CGFloat = 20.0
     private let maxColumnLenth: CGFloat = 120.0
     private let minColumnLength: CGFloat = 10.0
-    private var columnLengtMultipler: CGFloat = 1.0
    
     override func awakeFromNib() {
         
@@ -57,12 +56,11 @@ class GraphView: UIView {
         backgroundLayer.strokeEnd = 1
         layer.addSublayer(backgroundLayer)
         
-        
         let backgroundLayer2 = CAShapeLayer()
         let backgroundPath2 = UIBezierPath()
         
-        backgroundPath2.move(to: CGPoint(x: startX, y: bounds.midY))
-        backgroundPath2.addLine(to: CGPoint(x: endX, y: bounds.midY))
+        backgroundPath2.move(to: CGPoint(x: startX, y: (startY - maxColumnLenth/2)))
+        backgroundPath2.addLine(to: CGPoint(x: endX, y: (startY - maxColumnLenth/2)))
         
         backgroundLayer2.lineDashPattern = [6, 4]
         backgroundLayer2.path = backgroundPath2.cgPath
@@ -71,10 +69,9 @@ class GraphView: UIView {
         backgroundLayer2.strokeEnd = 1
         layer.addSublayer(backgroundLayer2)
         
-        
 //Foreground
         
-        guard compareObjects.count > 0 else {return}
+        guard !compareObjects.isEmpty else {return}
         
         guard let maxValue = compareObjects.map({ $0.value }).max() else {return}
         

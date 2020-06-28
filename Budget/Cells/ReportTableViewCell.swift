@@ -9,11 +9,9 @@ class ReportTableViewCell: UITableViewCell {
             
             switch newValue {
             case .expence:
-                typeImageView.image = UIImage(named: "button_minus")
-                typeImageView.backgroundColor = .red
+                typeImageView.image = UIImage(named: "expense_icon")
             case .income:
-                typeImageView.image = UIImage(named: "button_plus")
-                typeImageView.backgroundColor = .green
+                typeImageView.image = UIImage(named: "income_icon")
             default:
                 typeImageView.image = UIImage()
                 typeImageView.backgroundColor = .clear
