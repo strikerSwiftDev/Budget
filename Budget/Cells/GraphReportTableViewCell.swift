@@ -24,7 +24,6 @@ class GraphReportTableViewCell: UITableViewCell {
     }
     
     func setupCellFor(compareObject: CompareObjectModel)  {
-        
         valueLabel.text = String(compareObject.value) + " " + strCurrency
         colorIndicatorView.backgroundColor = compareObject.color
         colorIndicatorView.layer.cornerRadius = 10
@@ -50,14 +49,19 @@ class GraphReportTableViewCell: UITableViewCell {
         fromDateLabel.text = "от " + convertDateToString(date: compareObject.fromDate)
         toDateLabel.text = "до " + convertDateToString(date: compareObject.toDate)
         
+        indicatorImage.backgroundColor = .clear
+        
         switch compareObject.type {
             case .expence:
                 indicatorImage.image = UIImage(named: "expense_icon")
+
             case .income:
                 indicatorImage.image = UIImage(named: "income_icon")
+
             default:
                 indicatorImage.image = UIImage()
                 indicatorImage.backgroundColor = .yellow
+
             }
         
     }

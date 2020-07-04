@@ -12,7 +12,9 @@ class GraphReportViewController: UIViewController {
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    private var colorArr: [UIColor] = [.red, .label, .blue, .darkGray, .yellow, .green, .orange, .cyan, .magenta, .purple]
+    @IBOutlet weak var clearPanelVerticalConstraint: NSLayoutConstraint!
+    private let defaultsColors: [UIColor] = [.red, .label, .blue, .darkGray, .yellow, .green, .orange, .cyan, .magenta, .purple]
+    private var colorArr: [UIColor] = []
     
     private var compareObjects = [CompareObjectModel]()
     
@@ -22,6 +24,10 @@ class GraphReportViewController: UIViewController {
         navigationController?.navigationBar.tintColor = .label
         navigationItem.largeTitleDisplayMode = .never
         
+        clearPanelVerticalConstraint.constant = -35
+        
+        colorArr = defaultsColors
+        
         tableView.delegate = self
         tableView.dataSource = self
         let nib = UINib(nibName: "GraphReportTableViewCell", bundle: nil)
@@ -29,12 +35,11 @@ class GraphReportViewController: UIViewController {
         tableView.tableFooterView = UIView()
         tableView.dragInteractionEnabled = true
         tableView.dragDelegate = self
-        
-//        tableView.tableHeaderView?.inputAccessoryView
-        
+                
         activityIndicator.stopAnimating()
         
     }
+    
 //
     private func getPaymentsFor(filter: FiltersModel) {
         activityIndicator.startAnimating()
@@ -78,6 +83,7 @@ class GraphReportViewController: UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let filtersVC = storyboard.instantiateViewController(identifier: "FiltersViewControllerId") as! FiltersViewController
         filtersVC.delegate = self
+        filtersVC.setUseTwoSegments()
         present(filtersVC, animated: true, completion: nil)
     }
     
@@ -91,7 +97,9 @@ class GraphReportViewController: UIViewController {
         self.tableView.deleteRows(at: [indexPath], with: .automatic)
         self.tableView.endUpdates()
         
-        
+        if compareObjects.isEmpty {
+            hideClearPanel()
+        }
 //        tableView.reloadData()
         
         if colorArr.count > 0 {
@@ -109,6 +117,22 @@ class GraphReportViewController: UIViewController {
 
     }
     
+    private func showClearPanel() {
+        UIView.animate(withDuration: 0.33) {
+            self.clearPanelVerticalConstraint.constant = 0
+            self.view.layoutIfNeeded()
+
+        }
+    }
+    
+    private func hideClearPanel() {
+        UIView.animate(withDuration: 0.33) {
+            self.clearPanelVerticalConstraint.constant = -35
+            self.view.layoutIfNeeded()
+
+        }
+    }
+    
 // MARK: ACTIONS
 
 
@@ -117,13 +141,24 @@ class GraphReportViewController: UIViewController {
     }
     
     
-
+    @IBAction func clearButtonDidTap(_ sender: Any) {
+        hideClearPanel()
+        compareObjects = []
+        tableView.reloadData()
+        graphView.updateCompareData(compareObjects: compareObjects)
+        colorArr = defaultsColors
+        setAddBtnEnabled()
+    }
+    
 }
 
 //MARK: EXTENTIONS
 
 extension GraphReportViewController: FiltersViewControllerDelegate {
     func filtersApplied(filters: FiltersModel) {
+        if compareObjects.isEmpty {
+            showClearPanel()
+        }
         getPaymentsFor(filter: filters)
         
     }

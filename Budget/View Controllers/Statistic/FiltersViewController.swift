@@ -18,6 +18,8 @@ class FiltersViewController: UIViewController {
     private var selectedCategory = ""
     private let selectAllStr = "< ВСЕ >"
     
+    private var useTwoSegments = false
+    
     var currentPicker : UIDatePicker?
     
     var fromDate: Date?
@@ -29,9 +31,21 @@ class FiltersViewController: UIViewController {
 
     }
     
+    public func setUseTwoSegments() {
+        useTwoSegments = true
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        segmentControl.selectedSegmentIndex = 2
+        //
+        
+        if useTwoSegments {
+            segmentControl.removeSegment(at: 2, animated: false)
+            segmentControl.selectedSegmentIndex = 1
+        }else {
+            segmentControl.selectedSegmentIndex = 2
+        }
+
         categoriesTF.text = selectAllStr
         subcategoriesTF.text = ""
         fromDateTf.text = selectAllStr
@@ -43,6 +57,7 @@ class FiltersViewController: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         delegate = nil
+        useTwoSegments = false
     }
     
     private func setFilters() {

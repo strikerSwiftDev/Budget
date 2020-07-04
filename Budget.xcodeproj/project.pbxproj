@@ -25,6 +25,8 @@
 		F17957FA244D578500399D39 /* ReportTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F17957F8244D578500399D39 /* ReportTableViewCell.xib */; };
 		F196462C2460AC450056B0AE /* CompareObjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F196462B2460AC450056B0AE /* CompareObjectModel.swift */; };
 		F1A57CF0244BF551005514EA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1A57CEF244BF551005514EA /* Main.storyboard */; };
+		F1A5A31324B016D500EA7671 /* ExpenceGraphReportTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A5A31124B016D500EA7671 /* ExpenceGraphReportTableViewCell.swift */; };
+		F1A5A31424B016D500EA7671 /* ExpenceGraphReportTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1A5A31224B016D500EA7671 /* ExpenceGraphReportTableViewCell.xib */; };
 		F1C4BBC52427FA73007F7452 /* PaymentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C4BBC42427FA73007F7452 /* PaymentModel.swift */; };
 		F1C4BBC72427FB03007F7452 /* StatisticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C4BBC62427FB03007F7452 /* StatisticViewController.swift */; };
 		F1C4BBC92427FB17007F7452 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C4BBC82427FB17007F7452 /* SettingsViewController.swift */; };
@@ -33,6 +35,8 @@
 		F1C4BBD3242817FE007F7452 /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C4BBD2242817FE007F7452 /* PaymentViewController.swift */; };
 		F1C4BBD524283F01007F7452 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C4BBD424283F01007F7452 /* CategoriesViewController.swift */; };
 		F1D0985624400BB200759722 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D0985524400BB100759722 /* CoreDataManager.swift */; };
+		F1E40F0724AEB02000E029CB /* ExpenceReportGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E40F0624AEB02000E029CB /* ExpenceReportGraphView.swift */; };
+		F1E40F0924AEB0CC00E029CB /* ExpenxeReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E40F0824AEB0CC00E029CB /* ExpenxeReportViewController.swift */; };
 		F1F3F3A2243B7D8700149C6A /* Consts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F3F3A1243B7D8700149C6A /* Consts.swift */; };
 		F1F3F3A4243BABC200149C6A /* ThanksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F3F3A3243BABC200149C6A /* ThanksViewController.swift */; };
 		F1F6463B2426E92900A343A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F6463A2426E92900A343A4 /* AppDelegate.swift */; };
@@ -61,6 +65,8 @@
 		F17957F8244D578500399D39 /* ReportTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReportTableViewCell.xib; sourceTree = "<group>"; };
 		F196462B2460AC450056B0AE /* CompareObjectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompareObjectModel.swift; sourceTree = "<group>"; };
 		F1A57CEF244BF551005514EA /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		F1A5A31124B016D500EA7671 /* ExpenceGraphReportTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenceGraphReportTableViewCell.swift; sourceTree = "<group>"; };
+		F1A5A31224B016D500EA7671 /* ExpenceGraphReportTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpenceGraphReportTableViewCell.xib; sourceTree = "<group>"; };
 		F1C4BBC42427FA73007F7452 /* PaymentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentModel.swift; sourceTree = "<group>"; };
 		F1C4BBC62427FB03007F7452 /* StatisticViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticViewController.swift; sourceTree = "<group>"; };
 		F1C4BBC82427FB17007F7452 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -69,6 +75,8 @@
 		F1C4BBD2242817FE007F7452 /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
 		F1C4BBD424283F01007F7452 /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		F1D0985524400BB100759722 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		F1E40F0624AEB02000E029CB /* ExpenceReportGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenceReportGraphView.swift; sourceTree = "<group>"; };
+		F1E40F0824AEB0CC00E029CB /* ExpenxeReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenxeReportViewController.swift; sourceTree = "<group>"; };
 		F1F3F3A1243B7D8700149C6A /* Consts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Consts.swift; sourceTree = "<group>"; };
 		F1F3F3A3243BABC200149C6A /* ThanksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThanksViewController.swift; sourceTree = "<group>"; };
 		F1F646372426E92900A343A4 /* Budget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Budget.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -108,16 +116,27 @@
 				F1240D31246033FA0063B789 /* GraphReportTableViewCell.xib */,
 				F17957F7244D578500399D39 /* ReportTableViewCell.swift */,
 				F17957F8244D578500399D39 /* ReportTableViewCell.xib */,
+				F1A5A31124B016D500EA7671 /* ExpenceGraphReportTableViewCell.swift */,
+				F1A5A31224B016D500EA7671 /* ExpenceGraphReportTableViewCell.xib */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		F1355FAC24ABEB3D00FF4254 /* views */ = {
+			isa = PBXGroup;
+			children = (
+				F113A5F0245EE94200DBF1D5 /* GraphView.swift */,
+				F1E40F0624AEB02000E029CB /* ExpenceReportGraphView.swift */,
+			);
+			path = views;
 			sourceTree = "<group>";
 		};
 		F16C01B8243B58FA0030608C /* storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				F1F646482426E92C00A343A4 /* LaunchScreen.storyboard */,
 				F1A57CEF244BF551005514EA /* Main.storyboard */,
 				F16C01B9243B59380030608C /* Settings.storyboard */,
-				F1F646482426E92C00A343A4 /* LaunchScreen.storyboard */,
 				F1704C9524A6DA300070CE59 /* Statistic.storyboard */,
 			);
 			path = storyboards;
@@ -149,6 +168,7 @@
 				F1C4BBC62427FB03007F7452 /* StatisticViewController.swift */,
 				F17957F5244D3EFB00399D39 /* GraphReportViewController.swift */,
 				F17957F2244CA55800399D39 /* ReportStatisticViewController.swift */,
+				F1E40F0824AEB0CC00E029CB /* ExpenxeReportViewController.swift */,
 			);
 			path = Statistic;
 			sourceTree = "<group>";
@@ -198,7 +218,7 @@
 				F1235B3E2433EEB900A16293 /* messenger */,
 				F1C4BBCB2428028E007F7452 /* managment */,
 				F1C4BBCA2427FC95007F7452 /* models */,
-				F113A5F0245EE94200DBF1D5 /* GraphView.swift */,
+				F1355FAC24ABEB3D00FF4254 /* views */,
 				F1F646532426EE8500A343A4 /* View Controllers */,
 				F1F6463A2426E92900A343A4 /* AppDelegate.swift */,
 				F1F6463C2426E92900A343A4 /* SceneDelegate.swift */,
@@ -285,6 +305,7 @@
 				F1240D33246033FA0063B789 /* GraphReportTableViewCell.xib in Resources */,
 				F111A6092433E1D2000F51E5 /* UserMessageView.xib in Resources */,
 				F16C01BA243B59380030608C /* Settings.storyboard in Resources */,
+				F1A5A31424B016D500EA7671 /* ExpenceGraphReportTableViewCell.xib in Resources */,
 				F17957FA244D578500399D39 /* ReportTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -301,11 +322,14 @@
 				F1240D32246033FA0063B789 /* GraphReportTableViewCell.swift in Sources */,
 				F1C4BBD524283F01007F7452 /* CategoriesViewController.swift in Sources */,
 				F1F646452426E92900A343A4 /* Budget.xcdatamodeld in Sources */,
+				F1A5A31324B016D500EA7671 /* ExpenceGraphReportTableViewCell.swift in Sources */,
 				F1D0985624400BB200759722 /* CoreDataManager.swift in Sources */,
 				F1C4BBD124280472007F7452 /* Enums.swift in Sources */,
 				F1C4BBC92427FB17007F7452 /* SettingsViewController.swift in Sources */,
 				F1F6463D2426E92900A343A4 /* SceneDelegate.swift in Sources */,
 				F111A60B2433EB9F000F51E5 /* UserMessageView.swift in Sources */,
+				F1E40F0724AEB02000E029CB /* ExpenceReportGraphView.swift in Sources */,
+				F1E40F0924AEB0CC00E029CB /* ExpenxeReportViewController.swift in Sources */,
 				F16C01B7243B57AB0030608C /* MenuViewController.swift in Sources */,
 				F17957F6244D3EFB00399D39 /* GraphReportViewController.swift in Sources */,
 				F17957F9244D578500399D39 /* ReportTableViewCell.swift in Sources */,
