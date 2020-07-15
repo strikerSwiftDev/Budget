@@ -1,10 +1,3 @@
-//
-//  ThanksViewController.swift
-//  Budget
-//
-//  Created by Anatoliy Anatolyev on 06.04.2020.
-//  Copyright © 2020 Anatoliy Anatolyev. All rights reserved.
-//
 
 import UIKit
 

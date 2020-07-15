@@ -1,10 +1,3 @@
-//
-//  PaymentsGenerator.swift
-//  Budget
-//
-//  Created by Anatoliy Anatolyev on 24.04.2020.
-//  Copyright © 2020 Anatoliy Anatolyev. All rights reserved.
-//
 
 import Foundation
 

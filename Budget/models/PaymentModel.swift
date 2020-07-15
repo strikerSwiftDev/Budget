@@ -1,10 +1,3 @@
-//
-//  PaymentModel.swift
-//  Budget
-//
-//  Created by Anatoliy Anatolyev on 22.03.2020.
-//  Copyright © 2020 Anatoliy Anatolyev. All rights reserved.
-//
 
 import Foundation
 
@@ -16,6 +9,7 @@ struct Payment {
     var year: Int
     var month: Int
     var weekOfYear: Int
+    var weekDay: Int
     var day: Int
     var hour: Int
     var minute: Int
@@ -33,11 +27,11 @@ struct Payment {
         self.value = value
         self.paymentDate = paymentDate
         
-//        let year = Calendar.current.component(.year, from: date)
         
         self.year = Calendar.current.component(.year, from: paymentDate)
         self.month = Calendar.current.component(.month, from: paymentDate)
         self.weekOfYear = Calendar.current.component(.weekOfYear, from: paymentDate)
+        self.weekDay = Calendar.current.component(.weekday, from: paymentDate)
         self.day = Calendar.current.component(.day, from: paymentDate)
         self.hour = Calendar.current.component(.hour, from: paymentDate)
         self.minute = Calendar.current.component(.minute, from: paymentDate)

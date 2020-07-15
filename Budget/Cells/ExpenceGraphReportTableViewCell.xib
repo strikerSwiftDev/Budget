@@ -16,20 +16,31 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P75-r5-yEI">
-                        <rect key="frame" x="139" y="20" width="42" height="20.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="date 00000000000000000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xhE-8U-qig">
+                        <rect key="frame" x="16" y="5" width="214" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Value 00000000000000000" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P75-r5-yEI">
+                        <rect key="frame" x="17.5" y="32.5" width="265" height="24"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="P75-r5-yEI" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="V3f-3A-wyT"/>
-                    <constraint firstItem="P75-r5-yEI" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="x11-9u-lro"/>
+                    <constraint firstItem="P75-r5-yEI" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" constant="14.25" id="V3f-3A-wyT"/>
+                    <constraint firstItem="P75-r5-yEI" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" constant="-10" id="x11-9u-lro"/>
                 </constraints>
             </tableViewCellContentView>
+            <constraints>
+                <constraint firstItem="xhE-8U-qig" firstAttribute="leading" secondItem="njF-e1-oar" secondAttribute="leading" constant="16" id="1B8-Be-46a"/>
+                <constraint firstItem="xhE-8U-qig" firstAttribute="top" secondItem="njF-e1-oar" secondAttribute="top" constant="5" id="dcA-Vg-TIo"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="dateLabel" destination="xhE-8U-qig" id="2gI-nj-Npo"/>
                 <outlet property="valueLabel" destination="P75-r5-yEI" id="TY9-eV-aoi"/>
             </connections>
             <point key="canvasLocation" x="139" y="111"/>

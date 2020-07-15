@@ -53,6 +53,7 @@ class CoreDataManager {
 //MRK -LOADING
     
     func loadConvertedPaymentsWith(filter: FiltersModel) -> [Payment] {
+        
         return convertPaymentsToPaymentModel(coreDataPaymentsArray: loadPaymentsWith(filter: filter))
     }
     
@@ -90,7 +91,7 @@ class CoreDataManager {
         }
         
         if filter.toDate != nil {
-            let predicate = NSPredicate(format: "paymentDate >= %@", filter.toDate! as NSDate)
+            let predicate = NSPredicate(format: "paymentDate <= %@", filter.toDate! as NSDate)
             predicates.append(predicate)
         }
         
@@ -136,7 +137,6 @@ class CoreDataManager {
 
             payments.append(paymentModel)
         }
-        
         return payments
     }
     

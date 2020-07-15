@@ -2,7 +2,7 @@
 import UIKit
 
 
-enum ExpenceReportMode {
+enum ExpenceReportMode: Int {
     case month
     case week
 }
@@ -207,9 +207,13 @@ class ExpenceReportGraphView: UIView {
         
     }
     
-    public func setReportModeAndDisplayGraph(mode: ExpenceReportMode, values: [Double]) {
+    public func setReportModeAndDisplayGraph(mode: ExpenceReportMode, compareObjects: [EspenceReportCompareObjectModel]) {
         reportMode = mode
-        self.values = values
+        self.values = []
+        
+        for obj in compareObjects {
+            values.append(obj.value ?? 0)
+        }
         setNeedsDisplay()
     }
 
