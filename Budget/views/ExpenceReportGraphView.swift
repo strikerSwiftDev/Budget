@@ -154,10 +154,14 @@ class ExpenceReportGraphView: UIView {
     
     
     private func drawReportGraph() {
+        
         guard !values.isEmpty else {return}
         
-        guard let maxValue = values.max() else {return}
-
+        guard var maxValue = values.max() else {return}
+        if maxValue == 0 {
+            maxValue = 1
+        }
+        
         let myLayer = CAShapeLayer()
         let myPath = UIBezierPath()
 
