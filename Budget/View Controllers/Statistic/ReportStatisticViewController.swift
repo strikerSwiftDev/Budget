@@ -4,6 +4,13 @@ import UIKit
 class ReportStatisticViewController: UIViewController {
 
     
+    @IBOutlet weak var infoIncomeLabel: UILabel!
+    @IBOutlet weak var infoExpenceLabel: UILabel!
+    @IBOutlet weak var infoTotalLabel: UILabel!
+    @IBOutlet weak var infoImageView: UIImageView!
+    
+    @IBOutlet weak var infoViewVerticalConstraint: NSLayoutConstraint!
+    
     @IBOutlet weak var filterBtn: UIBarButtonItem!
     
     @IBOutlet weak var selector: UISegmentedControl!
@@ -24,6 +31,10 @@ class ReportStatisticViewController: UIViewController {
     
     private var manualFilter: FiltersModel?
     
+    private var expenceSumForInfo: Double = 0
+    private var incomeSumForInfo: Double = 0
+    private var totalSumForInfo: Double = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,7 +45,16 @@ class ReportStatisticViewController: UIViewController {
         selector.selectedSegmentIndex = 1
         filterBtn.isEnabled = false
         updateReportDataFor(selectorState: .week)
-        
+        infoViewVerticalConstraint.constant = 0
+        resetInfoStats()
+        showInfo()
+    }
+    
+    private func resetInfoStats() {
+        expenceSumForInfo = 0
+        incomeSumForInfo = 0
+        totalSumForInfo = 0
+
     }
     
     private func initialiseTableView () {
@@ -112,10 +132,14 @@ class ReportStatisticViewController: UIViewController {
     private func uploadAndUpadteDataFor(filter: FiltersModel) {
         reportActivityIndicator.startAnimating()
         tableViewActivityIndicator.startAnimating()
+        resetInfoStats()
+        showInfo()
         
         DispatchQueue.global().async {
             let fiteredPaymentsFromCoreData = CoreDataManager.shared.loadConvertedPaymentsWith(filter: filter)
             self.sortedPaymentsArray = self.filterAndPreparePaymentsArray(rawPayments: fiteredPaymentsFromCoreData)
+            self.calculateInfoFor(payments: fiteredPaymentsFromCoreData, filter: filter)
+            
             DispatchQueue.main.async {
                 
                 switch self.selector.selectedSegmentIndex {
@@ -131,11 +155,34 @@ class ReportStatisticViewController: UIViewController {
                 default:
                     break
                 }
-
+                self.showInfo()
                 self.reportTableView.reloadData()
                 self.reportActivityIndicator.stopAnimating()
                 self.tableViewActivityIndicator.stopAnimating()
             }
+        }
+        
+    }
+    
+    private func showInfo() {
+        infoExpenceLabel.text = String(expenceSumForInfo) + " " + Consts.strCurrency
+        infoIncomeLabel.text = String(incomeSumForInfo) + " " + Consts.strCurrency
+        infoTotalLabel.text = String(totalSumForInfo) + " " + Consts.strCurrency
+    }
+    
+    private func calculateInfoFor(payments: [Payment], filter: FiltersModel) {
+        let expencePayments = payments.filter { $0.type == .expence }
+        let incomePayments = payments.filter { $0.type == .income }
+        expenceSumForInfo = expencePayments.reduce(0, {$0 + $1.value})
+        incomeSumForInfo = incomePayments.reduce(0, {$0 + $1.value})
+        
+        switch filter.type {
+        case .income:
+            totalSumForInfo = incomeSumForInfo
+        case .expence:
+            totalSumForInfo = expenceSumForInfo
+        case .overal:
+            totalSumForInfo = incomeSumForInfo - expenceSumForInfo
         }
         
     }
@@ -161,7 +208,6 @@ class ReportStatisticViewController: UIViewController {
                 
                 if pmnt.date == date {
                     unsortedArr.append(pmnt)
-//                    rawPayments.remove
                 }
             }
             
@@ -188,15 +234,16 @@ class ReportStatisticViewController: UIViewController {
         case ReportSelectorState.mounth.rawValue:
             filterBtn.isEnabled = false
             updateReportDataFor(selectorState: .mounth)
-            
+            infoViewVerticalConstraint.constant = 0
+            infoImageView.image = UIImage()
         case ReportSelectorState.week.rawValue:
             filterBtn.isEnabled = false
             updateReportDataFor(selectorState: .week)
-            
+            infoViewVerticalConstraint.constant = 0
+            infoImageView.image = UIImage()
         case ReportSelectorState.filter.rawValue:
             filterBtn.isEnabled = true
             updateReportDataFor(selectorState: .filter)
-            
         default:
             break
         }
@@ -215,6 +262,22 @@ extension ReportStatisticViewController: FiltersViewControllerDelegate {
     func filtersApplied(filters: FiltersModel) {
         manualFilter = filters
         uploadAndUpadteDataFor(filter: filters)
+        
+        switch filters.type {
+        case .expence:
+            infoViewVerticalConstraint.constant = -35
+            infoImageView.image = UIImage(named: "expense_icon")
+        case .income:
+            infoViewVerticalConstraint.constant = -35
+            infoImageView.image = UIImage(named: "income_icon")
+        case .overal:
+            infoViewVerticalConstraint.constant = 0
+            infoImageView.image = UIImage()
+
+        }
+        
+        
+        
     }
    
 }

@@ -25,9 +25,8 @@ class ExpenceReportGraphView: UIView {
     
     private var labels = [UILabel]()
     
-    
-    
-    
+    private var columnOffset: CGFloat = 0.0
+    private var shift = 0
     
     override func draw(_ rect: CGRect) {
         super.draw(rect)
@@ -161,16 +160,7 @@ class ExpenceReportGraphView: UIView {
 
         let myLayer = CAShapeLayer()
         let myPath = UIBezierPath()
-        
-        var columnOffset: CGFloat = 0.0
-        
-        switch reportMode {
-        case .month:
-            columnOffset = (bounds.width - offset * 2) / 31
-        case .week:
-            columnOffset = (bounds.width - offset * 2) / 8
-        }
-     
+
         var iteration = 1
 
         for value in values {
@@ -207,17 +197,56 @@ class ExpenceReportGraphView: UIView {
         
     }
     
-    public func setReportModeAndDisplayGraph(mode: ExpenceReportMode, compareObjects: [EspenceReportCompareObjectModel]) {
+    public func setReportModeAndDisplayGraph(mode: ExpenceReportMode, compareObjects: [EspenceReportCompareObjectModel], shift: Int) {
         reportMode = mode
+        self.shift = shift
+
         self.values = []
         
         for obj in compareObjects {
             values.append(obj.value ?? 0)
         }
+        
+        switch reportMode {
+            case .month:
+                columnOffset = (bounds.width - offset * 2) / 31
+            case .week:
+                columnOffset = (bounds.width - offset * 2) / 8
+        }
+        
         setNeedsDisplay()
     }
 
-    
+    public func showMarkCollumn(index:Int) {
+        
+        
+         let collumnX = startX - 1 + columnOffset + columnOffset * CGFloat((index))
+        
+        let collumn = UIView(frame: CGRect(x: collumnX, y: startY - maxColumnLenth, width: 3, height: maxColumnLenth))
+        collumn.backgroundColor = .red
+        collumn.alpha = 0
+        self.addSubview(collumn)
+        
+        UIView.animate(withDuration: 0.33, animations: {
+            collumn.alpha = 1
+        }) { (complete) in
+            UIView.animate(withDuration: 0.33, animations: {
+                collumn.alpha = 0
+            }) { (complete) in /*
+                UIView.animate(withDuration: 0.33, animations: {
+                    collumn.alpha = 1
+                }) { (complete) in
+                    UIView.animate(withDuration: 0.33, animations: {
+                        collumn.alpha = 0
+                    }) { (complete) in */
+                        collumn.removeFromSuperview()
+//                    }
+//                }
+            }
+        }
+
+
+    }
     
     
     

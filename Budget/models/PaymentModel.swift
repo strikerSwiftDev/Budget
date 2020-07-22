@@ -14,6 +14,7 @@ struct Payment {
     var hour: Int
     var minute: Int
     var paymentDate: Date
+    var normalWeekDay: Int
     
     var date = Date()
     var time = Date()
@@ -54,6 +55,14 @@ struct Payment {
         date = Calendar.current.date(from: componentsForDate) ?? Consts.wrongDate
         time = Calendar.current.date(from: componentsForTime) ?? Consts.wrongDate
         dateInSecondsSince2001 = Int(date.timeIntervalSinceReferenceDate)
+        
+        if weekDay == 1 {
+            normalWeekDay = 7
+        } else {
+            normalWeekDay = weekDay - 1
+        }
+        
+//        print(weekDay, normalWeekDay)
 //        print(dateInSecondsSince2001)
     }
 }

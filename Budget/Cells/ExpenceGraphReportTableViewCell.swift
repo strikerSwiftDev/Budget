@@ -5,6 +5,10 @@ class ExpenceGraphReportTableViewCell: UITableViewCell {
 
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var valueLabel: UILabel!
+    
+    @IBOutlet weak var bigDateLabel: UILabel!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -15,7 +19,7 @@ class ExpenceGraphReportTableViewCell: UITableViewCell {
     }
     
     
-    public func initCellWithCompareObj (compareObj: EspenceReportCompareObjectModel) {
+    public func initCellWithCompareObj (compareObj: EspenceReportCompareObjectModel, displayMode: ExpenceReportMode) {
         if let value = compareObj.value {
             valueLabel.text = String(value) + " " + Consts.strCurrency
         } else {
@@ -23,12 +27,27 @@ class ExpenceGraphReportTableViewCell: UITableViewCell {
         }
         
         if let date = compareObj.date {
-            
             let formatter = DateFormatter()
             formatter.locale = Locale(identifier: "RU_ru")
-            formatter.dateFormat = "EE" + ",   " + "dd MMMM yyyy" + " г"
+            formatter.dateFormat = "EE"
+            let strWeekDay = formatter.string(from: date)
+            formatter.dateFormat = "dd MMMM yyyy" + " г"
+            let strDateforWeekMode = formatter.string(from: date)
+            
+            formatter.dateFormat = "dd"
+            let strDay = formatter.string(from: date)
+            formatter.dateFormat = "MMMM yyyy" + " г" + ",    " + "EE"
+            let strDateForMonthMode = formatter.string(from: date)
+            
+            switch displayMode {
+            case .month:
+                bigDateLabel.text = strDay
+                dateLabel.text = strDateForMonthMode
+            case .week:
+                bigDateLabel.text = strWeekDay
+                dateLabel.text = strDateforWeekMode
+            }
 
-            dateLabel.text = formatter.string(from: date)
         } else {
             dateLabel.text = "!!! no date !!!"
         }

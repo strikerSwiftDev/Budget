@@ -102,7 +102,7 @@ class ExpenxeReportViewController: UIViewController {
         
         switch displayMode {
         case .month:
-            let targetDate = Calendar.current.date(byAdding: .month, value: monthDiff, to: todayDate)!
+            guard let targetDate = Calendar.current.date(byAdding: .month, value: monthDiff, to: todayDate) else {break}
             
             components.year = Calendar.current.component(.year, from: targetDate)
             components.month = Calendar.current.component(.month, from: targetDate)
@@ -140,12 +140,14 @@ class ExpenxeReportViewController: UIViewController {
 
         DispatchQueue.global().async {
             let fiteredPaymentsFromCoreData = CoreDataManager.shared.loadConvertedPaymentsWith(filter: myFilter)
-            self.values = self.preparedCompareObjectsFrom(rawPayments: fiteredPaymentsFromCoreData)
+            let result = self.preparedCompareObjectsFrom(rawPayments: fiteredPaymentsFromCoreData)
+            self.values = result.0
+            let shift = result.1
             
             DispatchQueue.main.async {
                   
                 self.activityIndicator.stopAnimating()
-                self.graphView.setReportModeAndDisplayGraph(mode: self.displayMode, compareObjects : self.values)
+                self.graphView.setReportModeAndDisplayGraph(mode: self.displayMode, compareObjects : self.values, shift: shift)
                 self.tableView.reloadData()
             }
             
@@ -153,10 +155,13 @@ class ExpenxeReportViewController: UIViewController {
             
     }
     
-    private func preparedCompareObjectsFrom(rawPayments: [Payment]) -> [EspenceReportCompareObjectModel] {
+    private func preparedCompareObjectsFrom(rawPayments: [Payment]) -> ([EspenceReportCompareObjectModel], Int) {
 
         let startCount = 1
         var endCount = 0
+//        var shift = 0
+        let shift = 0
+        
         switch displayMode {
         case .month:
             endCount = Calendar.current.component(.day, from: finishDate)
@@ -174,10 +179,20 @@ class ExpenxeReportViewController: UIViewController {
             case .month:
                 paymentsByTheDay = rawPayments.filter{$0.day == i}
             case .week:
-                paymentsByTheDay = rawPayments.filter{$0.weekDay == i}
+                paymentsByTheDay = rawPayments.filter{$0.normalWeekDay == i}
             }
             
-            let date = Calendar.current.date(byAdding: .day, value: (i - (1 + displayMode.rawValue)), to: startDate)
+            let date = Calendar.current.date(byAdding: .day, value: (i - 1), to: startDate) ?? Consts.wrongDate
+            
+//            if date! < theVeryFirsDate {
+//                shift += 1
+//                continue
+//            }
+            
+            if date > todayDate {
+                break
+            }
+            
             let compareObj = EspenceReportCompareObjectModel(value: 0, date: date)
 
             if !paymentsByTheDay.isEmpty {
@@ -188,13 +203,8 @@ class ExpenxeReportViewController: UIViewController {
             compareObjs.append(compareObj)
             
         }
-        
-        if displayMode == .week {
-            let obj = compareObjs.removeFirst()
-            compareObjs.append(obj)
-        }
 
-        return compareObjs
+        return (compareObjs, shift)
     }
     
     private func checkMinimumDateRangeLimit() {
@@ -243,22 +253,8 @@ extension ExpenxeReportViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        graphView.showMarkCollumn(index: indexPath.row)
     }
-
-//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//
-//        if let payment = sortedPaymentsArray[section].first {
-//
-//            let formatter = DateFormatter()
-//            formatter.dateFormat = "dd MMMM yyyy"
-//            formatter.locale = Locale(identifier: "RU_ru")
-//            let strDate = formatter.string(from: payment.date)
-//            return strDate
-//
-//        } else { return ""}
-//
-//
-//    }
     
 }
 
@@ -274,7 +270,7 @@ extension ExpenxeReportViewController: UITableViewDataSource {
        
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ExpenceGraphReportTableViewCellId", for: indexPath) as! ExpenceGraphReportTableViewCell
-        cell.initCellWithCompareObj(compareObj: values[indexPath.row])
+        cell.initCellWithCompareObj(compareObj: values[indexPath.row], displayMode: displayMode)
 
         return cell
     }
