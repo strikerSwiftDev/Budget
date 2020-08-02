@@ -13,6 +13,9 @@
 		F1235B402433EEEA00A16293 /* UserMessenger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1235B3F2433EEEA00A16293 /* UserMessenger.swift */; };
 		F1240D32246033FA0063B789 /* GraphReportTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1240D30246033FA0063B789 /* GraphReportTableViewCell.swift */; };
 		F1240D33246033FA0063B789 /* GraphReportTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1240D31246033FA0063B789 /* GraphReportTableViewCell.xib */; };
+		F135B5E524C9297A008CF147 /* CategoriesStatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F135B5E424C9297A008CF147 /* CategoriesStatViewController.swift */; };
+		F135B5E824C9713E008CF147 /* CategoriesStatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F135B5E624C9713E008CF147 /* CategoriesStatTableViewCell.swift */; };
+		F135B5E924C9713E008CF147 /* CategoriesStatTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F135B5E724C9713E008CF147 /* CategoriesStatTableViewCell.xib */; };
 		F135E096244A7C9900CA164A /* FiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F135E095244A7C9900CA164A /* FiltersViewController.swift */; };
 		F139B4BC2452A0EB00259C6A /* PaymentsGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F139B4BB2452A0EB00259C6A /* PaymentsGenerator.swift */; };
 		F13B900A24B90336007D9FC0 /* EspenceReportCompareObjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13B900924B90336007D9FC0 /* EspenceReportCompareObjectModel.swift */; };
@@ -28,6 +31,7 @@
 		F1A57CF0244BF551005514EA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1A57CEF244BF551005514EA /* Main.storyboard */; };
 		F1A5A31324B016D500EA7671 /* ExpenceGraphReportTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A5A31124B016D500EA7671 /* ExpenceGraphReportTableViewCell.swift */; };
 		F1A5A31424B016D500EA7671 /* ExpenceGraphReportTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1A5A31224B016D500EA7671 /* ExpenceGraphReportTableViewCell.xib */; };
+		F1B3A20324D5BD9A00D7B49B /* StatReportObjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B3A20224D5BD9A00D7B49B /* StatReportObjectModel.swift */; };
 		F1C4BBC52427FA73007F7452 /* PaymentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C4BBC42427FA73007F7452 /* PaymentModel.swift */; };
 		F1C4BBC72427FB03007F7452 /* StatisticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C4BBC62427FB03007F7452 /* StatisticViewController.swift */; };
 		F1C4BBC92427FB17007F7452 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C4BBC82427FB17007F7452 /* SettingsViewController.swift */; };
@@ -54,6 +58,9 @@
 		F1235B3F2433EEEA00A16293 /* UserMessenger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMessenger.swift; sourceTree = "<group>"; };
 		F1240D30246033FA0063B789 /* GraphReportTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphReportTableViewCell.swift; sourceTree = "<group>"; };
 		F1240D31246033FA0063B789 /* GraphReportTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GraphReportTableViewCell.xib; sourceTree = "<group>"; };
+		F135B5E424C9297A008CF147 /* CategoriesStatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesStatViewController.swift; sourceTree = "<group>"; };
+		F135B5E624C9713E008CF147 /* CategoriesStatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesStatTableViewCell.swift; sourceTree = "<group>"; };
+		F135B5E724C9713E008CF147 /* CategoriesStatTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoriesStatTableViewCell.xib; sourceTree = "<group>"; };
 		F135E095244A7C9900CA164A /* FiltersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersViewController.swift; sourceTree = "<group>"; };
 		F139B4BB2452A0EB00259C6A /* PaymentsGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentsGenerator.swift; sourceTree = "<group>"; };
 		F13B900924B90336007D9FC0 /* EspenceReportCompareObjectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EspenceReportCompareObjectModel.swift; sourceTree = "<group>"; };
@@ -69,6 +76,7 @@
 		F1A57CEF244BF551005514EA /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		F1A5A31124B016D500EA7671 /* ExpenceGraphReportTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenceGraphReportTableViewCell.swift; sourceTree = "<group>"; };
 		F1A5A31224B016D500EA7671 /* ExpenceGraphReportTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpenceGraphReportTableViewCell.xib; sourceTree = "<group>"; };
+		F1B3A20224D5BD9A00D7B49B /* StatReportObjectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatReportObjectModel.swift; sourceTree = "<group>"; };
 		F1C4BBC42427FA73007F7452 /* PaymentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentModel.swift; sourceTree = "<group>"; };
 		F1C4BBC62427FB03007F7452 /* StatisticViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticViewController.swift; sourceTree = "<group>"; };
 		F1C4BBC82427FB17007F7452 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -120,6 +128,8 @@
 				F17957F8244D578500399D39 /* ReportTableViewCell.xib */,
 				F1A5A31124B016D500EA7671 /* ExpenceGraphReportTableViewCell.swift */,
 				F1A5A31224B016D500EA7671 /* ExpenceGraphReportTableViewCell.xib */,
+				F135B5E624C9713E008CF147 /* CategoriesStatTableViewCell.swift */,
+				F135B5E724C9713E008CF147 /* CategoriesStatTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -171,6 +181,7 @@
 				F17957F5244D3EFB00399D39 /* GraphReportViewController.swift */,
 				F17957F2244CA55800399D39 /* ReportStatisticViewController.swift */,
 				F1E40F0824AEB0CC00E029CB /* ExpenxeReportViewController.swift */,
+				F135B5E424C9297A008CF147 /* CategoriesStatViewController.swift */,
 			);
 			path = Statistic;
 			sourceTree = "<group>";
@@ -182,6 +193,7 @@
 				F1738ABA244F0227007392C2 /* FiltersModel.swift */,
 				F196462B2460AC450056B0AE /* CompareObjectModel.swift */,
 				F13B900924B90336007D9FC0 /* EspenceReportCompareObjectModel.swift */,
+				F1B3A20224D5BD9A00D7B49B /* StatReportObjectModel.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -302,6 +314,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F1F6464A2426E92C00A343A4 /* LaunchScreen.storyboard in Resources */,
+				F135B5E924C9713E008CF147 /* CategoriesStatTableViewCell.xib in Resources */,
 				F1A57CF0244BF551005514EA /* Main.storyboard in Resources */,
 				F1F646472426E92C00A343A4 /* Assets.xcassets in Resources */,
 				F1704C9624A6DA300070CE59 /* Statistic.storyboard in Resources */,
@@ -328,6 +341,7 @@
 				F1A5A31324B016D500EA7671 /* ExpenceGraphReportTableViewCell.swift in Sources */,
 				F1D0985624400BB200759722 /* CoreDataManager.swift in Sources */,
 				F1C4BBD124280472007F7452 /* Enums.swift in Sources */,
+				F135B5E524C9297A008CF147 /* CategoriesStatViewController.swift in Sources */,
 				F1C4BBC92427FB17007F7452 /* SettingsViewController.swift in Sources */,
 				F1F6463D2426E92900A343A4 /* SceneDelegate.swift in Sources */,
 				F111A60B2433EB9F000F51E5 /* UserMessageView.swift in Sources */,
@@ -341,8 +355,10 @@
 				F13B900A24B90336007D9FC0 /* EspenceReportCompareObjectModel.swift in Sources */,
 				F17957F3244CA55800399D39 /* ReportStatisticViewController.swift in Sources */,
 				F1C4BBD3242817FE007F7452 /* PaymentViewController.swift in Sources */,
+				F1B3A20324D5BD9A00D7B49B /* StatReportObjectModel.swift in Sources */,
 				F1235B402433EEEA00A16293 /* UserMessenger.swift in Sources */,
 				F1F3F3A4243BABC200149C6A /* ThanksViewController.swift in Sources */,
+				F135B5E824C9713E008CF147 /* CategoriesStatTableViewCell.swift in Sources */,
 				F113A5F1245EE94200DBF1D5 /* GraphView.swift in Sources */,
 				F1C4BBCF2428031A007F7452 /* DataManager.swift in Sources */,
 				F1738ABB244F0227007392C2 /* FiltersModel.swift in Sources */,

@@ -192,6 +192,7 @@ class FiltersViewController: UIViewController {
             default:
                 break
             }
+            
             currentPicker = picker
             btn.addTarget(self, action: #selector (setDate), for: UIControl.Event.touchUpInside)
             
