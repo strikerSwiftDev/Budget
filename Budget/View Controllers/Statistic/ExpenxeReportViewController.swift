@@ -75,17 +75,24 @@ class ExpenxeReportViewController: UIViewController {
         formatter.locale = Locale(identifier: "RU_ru")
         formatter.dateFormat = "LLLL" + " " + "yyyy" + " г"
         let strDate1 = formatter.string(from: startDate)
-        formatter.dateFormat = "MMMM" + " " + "yyyy" + " г"
+        formatter.dateFormat = "yyyy" + " г"
         let strDate2 = formatter.string(from: startDate)
         formatter.dateFormat = "dd"
         let strFromDay = formatter.string(from: startDate)
         let strToDay = formatter.string(from: finishDate)
+        formatter.dateFormat = " " + "MMMM"
+        var monthFromDate = formatter.string(from: startDate)
+        let monthToDate = formatter.string(from: finishDate)
+        
+        if monthToDate == monthFromDate {
+            monthFromDate = ""
+        }
         
         switch displayMode {
         case .month:
             infoLabel.text = strDate1
         case .week:
-            infoLabel.text = strFromDay + " - " + strToDay + "    " + strDate2
+            infoLabel.text = strFromDay + monthFromDate + " - " + strToDay + monthToDate + "    " + strDate2
         }
        
         uploadDataFor(myFilter: filter)
@@ -113,9 +120,10 @@ class ExpenxeReportViewController: UIViewController {
             finishDate = Calendar.current.date(byAdding: .day, value: -1, to: date1)!
 
         case .week:
-            let weekday = Calendar.current.component(.weekday, from: todayDate) - 2 - weekDiff
-            let targetDate = Calendar.current.date(byAdding: .day, value: -weekday, to: todayDate)!
-            
+
+            let nearestMonday = returnTheNearestMonday()
+            guard let targetDate = Calendar.current.date(byAdding: .day, value: weekDiff, to: nearestMonday) else {break}
+
             components.year = Calendar.current.component(.year, from: targetDate)
             components.month = Calendar.current.component(.month, from: targetDate)
             components.day = Calendar.current.component(.day, from: targetDate)
@@ -135,6 +143,16 @@ class ExpenxeReportViewController: UIViewController {
         
     }
     
+    private func returnTheNearestMonday() -> Date {
+        var myDate = Date()
+        
+        while Calendar.current.component(.weekday, from: myDate) != 2 {
+            let date = Calendar.current.date(byAdding: .day, value: -1, to: myDate)
+            myDate = date!
+        }
+        
+        return myDate
+    }
     
     private func uploadDataFor(myFilter: FiltersModel) {
 

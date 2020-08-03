@@ -25,8 +25,17 @@ class CategoriesStatViewController: UIViewController {
     private var storedCategoriesObjects = [StatReportObjectModel]()
     private var currentPayments = [Payment]()
     
-    private var fromDate: Date? = nil
-    private var toDate: Date? = nil
+    private var fromDate: Date?
+    private var toDate: Date? {
+        didSet {
+            if toDate != nil {
+                
+                let newDate = Calendar.current.date(byAdding: .day, value: 1, to: toDate!)
+                toDate = newDate
+            }
+        }
+    }
+        
     private var mode = PaymentType.expence
     
     private var tableViewMode = TableViewMode.categories
@@ -193,13 +202,20 @@ class CategoriesStatViewController: UIViewController {
         formatter.locale = Locale(identifier: "RU_ru")
         let strDate = formatter.string(from: picker.date)
 
+        var components = DateComponents()
+        components.year = Calendar.current.component(.year, from: picker.date)
+        components.month = Calendar.current.component(.month, from: picker.date)
+        components.day = Calendar.current.component(.day, from: picker.date)
+        
+        let myDate = Calendar.current.date(from: components)
+        
         switch picker.tag {
         case 1:
             fromDateTF.text = strDate
-            fromDate = picker.date
+            fromDate = myDate
         case 2:
             toDateTF.text = strDate
-            toDate = picker.date
+            toDate = myDate
         default:
             break
         }

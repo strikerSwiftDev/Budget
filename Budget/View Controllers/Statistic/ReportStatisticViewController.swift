@@ -98,9 +98,10 @@ class ReportStatisticViewController: UIViewController {
             
         case .week:
             if CoreDataManager.shared.haveToUpdateWeekPaymentsFlag {
-                let weekday = Calendar.current.component(.weekday, from: date) - 2
-                let targetDate = Calendar.current.date(byAdding: .day, value: -weekday, to: date)!
+//                let weekday = Calendar.current.component(.weekday, from: date) - 2
+//                let targetDate = Calendar.current.date(byAdding: .day, value: -weekday, to: date)!
                 
+                let targetDate = returnTheNearestMonday()
                 var components = DateComponents()
                 components.year = Calendar.current.component(.year, from: targetDate)
                 components.month = Calendar.current.component(.month, from: targetDate)
@@ -127,6 +128,17 @@ class ReportStatisticViewController: UIViewController {
             }
         }
         
+    }
+    
+    private func returnTheNearestMonday() -> Date {
+        var myDate = Date()
+        
+        while Calendar.current.component(.weekday, from: myDate) != 2 {
+            let date = Calendar.current.date(byAdding: .day, value: -1, to: myDate)
+            myDate = date!
+        }
+        
+        return myDate
     }
     
     private func uploadAndUpadteDataFor(filter: FiltersModel) {

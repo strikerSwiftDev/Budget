@@ -23,7 +23,16 @@ class FiltersViewController: UIViewController {
     var currentPicker : UIDatePicker?
     
     var fromDate: Date?
-    var toDate: Date?
+    var toDate: Date? {
+        didSet {
+            if toDate != nil {
+                
+                let newDate = Calendar.current.date(byAdding: .day, value: 1, to: toDate!)
+                toDate = newDate
+                
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -208,14 +217,21 @@ class FiltersViewController: UIViewController {
         formatter.dateFormat = "dd MMMM yyyy"
         formatter.locale = Locale(identifier: "RU_ru")
         let strDate = formatter.string(from: picker.date)
-
+        
+        var components = DateComponents()
+        components.year = Calendar.current.component(.year, from: picker.date)
+        components.month = Calendar.current.component(.month, from: picker.date)
+        components.day = Calendar.current.component(.day, from: picker.date)
+        
+        let myDate = Calendar.current.date(from: components)
+        
         switch picker.tag {
         case 1:
             fromDateTf.text = strDate
-            fromDate = picker.date
+            fromDate = myDate
         case 2:
             toDateTf.text = strDate
-            toDate = picker.date
+            toDate = myDate
         default:
             break
         }
