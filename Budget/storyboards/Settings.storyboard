@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eIr-d2-AVo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eIr-d2-AVo">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -17,10 +17,38 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="66" translatesAutoresizingMaskIntoConstraints="NO" id="oKC-lw-env">
-                                <rect key="frame" x="97" y="265" width="181" height="132"/>
+                                <rect key="frame" x="50" y="207" width="275" height="248"/>
                                 <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qdP-1g-c0n">
+                                        <rect key="frame" x="0.0" y="0.0" width="275" height="50"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Валюта" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PfE-Ar-pis">
+                                                <rect key="frame" x="31" y="15" width="64" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="WWW" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4rg-hA-nvv">
+                                                <rect key="frame" x="173" y="6.5" width="68" height="35"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="68" id="vQ2-An-aYY"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstItem="4rg-hA-nvv" firstAttribute="leading" secondItem="PfE-Ar-pis" secondAttribute="trailing" constant="78" id="7iq-c8-Zim"/>
+                                            <constraint firstItem="4rg-hA-nvv" firstAttribute="centerY" secondItem="qdP-1g-c0n" secondAttribute="centerY" constant="-1" id="9tb-lM-SGr"/>
+                                            <constraint firstAttribute="trailing" secondItem="4rg-hA-nvv" secondAttribute="trailing" constant="34" id="F6e-Gl-0Wi"/>
+                                            <constraint firstAttribute="height" constant="50" id="Vh7-st-bO2"/>
+                                            <constraint firstItem="PfE-Ar-pis" firstAttribute="leading" secondItem="qdP-1g-c0n" secondAttribute="leading" constant="31" id="W9S-45-gMV"/>
+                                            <constraint firstItem="PfE-Ar-pis" firstAttribute="centerY" secondItem="qdP-1g-c0n" secondAttribute="centerY" id="xZE-6q-kZ4"/>
+                                        </constraints>
+                                    </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KMc-KL-bCi">
-                                        <rect key="frame" x="0.0" y="0.0" width="181" height="33"/>
+                                        <rect key="frame" x="0.0" y="116" width="275" height="33"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                         <state key="normal" title="Сброс данных">
                                             <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -30,7 +58,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Khn-Fa-xbD">
-                                        <rect key="frame" x="0.0" y="99" width="181" height="33"/>
+                                        <rect key="frame" x="0.0" y="215" width="275" height="33"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                         <state key="normal" title="Удалить все платежи">
                                             <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -44,16 +72,21 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="oKC-lw-env" firstAttribute="centerY" secondItem="7aq-XJ-QrE" secondAttribute="centerY" id="GrQ-W3-UhG"/>
-                            <constraint firstItem="oKC-lw-env" firstAttribute="centerX" secondItem="7aq-XJ-QrE" secondAttribute="centerX" id="ao5-TJ-Vgv"/>
+                            <constraint firstItem="oKC-lw-env" firstAttribute="centerY" secondItem="7aq-XJ-QrE" secondAttribute="centerY" id="F2r-zn-o6C"/>
+                            <constraint firstItem="oKC-lw-env" firstAttribute="centerX" secondItem="7aq-XJ-QrE" secondAttribute="centerX" id="YVX-Nv-gXt"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7aq-XJ-QrE"/>
                     </view>
                     <navigationItem key="navigationItem" title="Настройки" id="35D-cd-gvl"/>
+                    <connections>
+                        <outlet property="currencyTXT" destination="4rg-hA-nvv" id="Zib-XQ-xkx"/>
+                        <outlet property="deleteDataBtn" destination="KMc-KL-bCi" id="9q9-hp-Msn"/>
+                        <outlet property="deletePaymentsBtn" destination="Khn-Fa-xbD" id="bA5-JR-598"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yge-0T-LMM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3686" y="1763"/>
+            <point key="canvasLocation" x="3685.5999999999999" y="1762.6686656671666"/>
         </scene>
         <!--Меню-->
         <scene sceneID="VE6-Dh-QBe">

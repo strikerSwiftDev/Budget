@@ -21,7 +21,7 @@ class Consts {
                                        "Работа": ["Зарплата","Аванс"],
                                        "Одежда": ["Верхняя","Нижняя","Аксессуары",
                                                 "Украшения", "Английский"]]
-    static let strCurrency = "Uah"
+    static let defaultStrCurrency = "Uah"
 }
 
 

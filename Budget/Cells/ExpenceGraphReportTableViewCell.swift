@@ -21,7 +21,7 @@ class ExpenceGraphReportTableViewCell: UITableViewCell {
     
     public func initCellWithCompareObj (compareObj: EspenceReportCompareObjectModel, displayMode: ExpenceReportMode) {
         if let value = compareObj.value {
-            valueLabel.text = String(value) + " " + Consts.strCurrency
+            valueLabel.text = String(value) + " " + DataManager.shared.getShortStringCurrency()
         } else {
             valueLabel.text = "!! no value !!"
         }

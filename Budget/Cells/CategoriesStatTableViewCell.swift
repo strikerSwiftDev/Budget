@@ -49,7 +49,7 @@ class CategoriesStatTableViewCell: UITableViewCell {
             accessoryType = .none
         }
         
-        valueLabel.text = String(object.value) + " " + Consts.strCurrency
+        valueLabel.text = String(object.value) + " " + DataManager.shared.getShortStringCurrency()
         categoryLabel.text = object.name
         
         

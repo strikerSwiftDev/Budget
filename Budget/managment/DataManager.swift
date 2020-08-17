@@ -21,11 +21,14 @@ class DataManager {
     
     private var payments = [Payment]()
     
+    private var shortStringCurrency = ""
+    
     // userdefaults keys
     private let strKeyForCategories = "categories"
     private let strKeyForSubcategories = "subcategories"
     private let strKeyForFirstLaunchFlag = "launchedBefore"
     private let theVeryFirstDateKey = "theVeryFirstDate"
+    private let shortStringCurrencyKey = "shortStringCurrency"
     
     private init () {
         
@@ -126,6 +129,19 @@ class DataManager {
 //        print(payment)
     }
     
+    // MARK: DIFFERENT
+    
+    func getShortStringCurrency() -> String {
+        
+        return shortStringCurrency
+    }
+    
+    func saveNewShortStringCurrency(currency: String) {
+        
+        UserDefaults.standard.set(currency, forKey: shortStringCurrencyKey)
+        shortStringCurrency = currency
+    }
+    
     // MARK: SAVE AND LOAD
     
     //вызывать метод в первую очередь
@@ -150,6 +166,7 @@ class DataManager {
         
         _ = CoreDataManager.shared
         
+        shortStringCurrency = UserDefaults.standard.string(forKey: shortStringCurrencyKey) ?? Consts.defaultStrCurrency
         
     }
     

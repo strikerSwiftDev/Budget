@@ -33,7 +33,7 @@ class ReportTableViewCell: UITableViewCell {
         paymentType = payment.type
         categoriesTF.text = payment.category
         subcategoriesTF.text = payment.subcategory
-        valueTF.text = String(payment.value) + "  " + Consts.strCurrency
+        valueTF.text = String(payment.value) + "  " + DataManager.shared.getShortStringCurrency()
 
         let strHour = intToString(int: payment.hour)
         let strMinute = intToString(int: payment.minute)

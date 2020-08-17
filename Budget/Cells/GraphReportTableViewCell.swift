@@ -13,7 +13,7 @@ class GraphReportTableViewCell: UITableViewCell {
     
     @IBOutlet weak var toDateLabel: UILabel!
     
-    private var strCurrency = Consts.strCurrency
+    private var strCurrency = DataManager.shared.getShortStringCurrency()
     private let selectAllStr = "< ВСЕ >"
     
     

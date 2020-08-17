@@ -3,22 +3,37 @@ import UIKit
 
 class SettingsViewController: UIViewController {
 
+    
+    @IBOutlet weak var currencyTXT: UITextField!
+    
+    @IBOutlet weak var deleteDataBtn: UIButton!
+    @IBOutlet weak var deletePaymentsBtn: UIButton!
+    
+    
+    
+    private var stringCurrency = ""
+    
+    
+    
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.tintColor = UIColor.label
         navigationItem.largeTitleDisplayMode = .never
+        
+        stringCurrency = DataManager.shared.getShortStringCurrency()
+        
+        currencyTXT.keyboardType = .default
+        currencyTXT.autocapitalizationType = .words
+        currencyTXT.text = stringCurrency
+        currencyTXT.delegate = self
+        
+        
+        
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
     @IBAction func deleteAllPaymentsBtnTapped(_ sender: Any) {
         showDeleteAllPaymentsAlert()
@@ -71,4 +86,66 @@ class SettingsViewController: UIViewController {
         
     }
     
+    private func enableUserInteraction() {
+        deleteDataBtn.isEnabled = true
+        deletePaymentsBtn.isEnabled = true
+        deleteDataBtn.alpha = 1
+        deletePaymentsBtn.alpha = 1
+    }
+    
+    private func disableUserInteraction() {
+        deleteDataBtn.isEnabled = false
+        deletePaymentsBtn.isEnabled = false
+        deleteDataBtn.alpha = 0.5
+        deletePaymentsBtn.alpha = 0.5
+    }
+    
+    
+    
 }
+
+extension SettingsViewController: UITextFieldDelegate {
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+
+        enableUserInteraction()
+        
+        if let newCurrency = currencyTXT.text, !newCurrency.isEmpty {
+            
+            DataManager.shared.saveNewShortStringCurrency(currency: newCurrency)
+            stringCurrency = newCurrency
+            
+        }
+        
+        currencyTXT.text = stringCurrency
+        
+
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+
+        disableUserInteraction()
+        
+        textField.text = ""
+        
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        let currentCharacterCount = textField.text?.count ?? 0
+        let newLength = currentCharacterCount + string.count
+        
+        if string == " " {
+            return false
+        }
+        
+        return newLength <= 3
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        currencyTXT.resignFirstResponder()
+    }
+    
+   
+}
+

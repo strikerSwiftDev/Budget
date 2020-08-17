@@ -35,6 +35,8 @@ class ReportStatisticViewController: UIViewController {
     private var incomeSumForInfo: Double = 0
     private var totalSumForInfo: Double = 0
     
+    private var strCurrency = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -42,12 +44,21 @@ class ReportStatisticViewController: UIViewController {
         navigationItem.largeTitleDisplayMode = .never
         initialiseTableView()
         
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        strCurrency = DataManager.shared.getShortStringCurrency()
+        
         selector.selectedSegmentIndex = 1
         filterBtn.isEnabled = false
         updateReportDataFor(selectorState: .week)
         infoViewVerticalConstraint.constant = 0
         resetInfoStats()
         showInfo()
+        
     }
     
     private func resetInfoStats() {
@@ -177,9 +188,9 @@ class ReportStatisticViewController: UIViewController {
     }
     
     private func showInfo() {
-        infoExpenceLabel.text = String(expenceSumForInfo) + " " + Consts.strCurrency
-        infoIncomeLabel.text = String(incomeSumForInfo) + " " + Consts.strCurrency
-        infoTotalLabel.text = String(totalSumForInfo) + " " + Consts.strCurrency
+        infoExpenceLabel.text = String(expenceSumForInfo) + " " + strCurrency
+        infoIncomeLabel.text = String(incomeSumForInfo) + " " + strCurrency
+        infoTotalLabel.text = String(totalSumForInfo) + " " + strCurrency
     }
     
     private func calculateInfoFor(payments: [Payment], filter: FiltersModel) {
