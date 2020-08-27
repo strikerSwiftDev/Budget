@@ -40,6 +40,8 @@ class GraphReportViewController: UIViewController {
         
     }
     
+    
+    
 //
     private func getPaymentsFor(filter: FiltersModel) {
         activityIndicator.startAnimating()

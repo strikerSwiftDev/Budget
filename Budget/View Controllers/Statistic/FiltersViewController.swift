@@ -12,6 +12,11 @@ class FiltersViewController: UIViewController {
     @IBOutlet weak var toDateTf: UITextField!
     @IBOutlet weak var segmentControl: UISegmentedControl!
     
+    @IBOutlet weak var cancelBTN: UIButton!
+    
+    @IBOutlet weak var applyBTN: UIButton!
+    
+    
     weak var delegate: FiltersViewControllerDelegate?
     
     private var tableContentArray = [String]()
@@ -44,7 +49,9 @@ class FiltersViewController: UIViewController {
         useTwoSegments = true
     }
     
+    
     override func viewWillAppear(_ animated: Bool) {
+        
         super.viewWillAppear(animated)
         //
         
@@ -100,6 +107,9 @@ class FiltersViewController: UIViewController {
     
     
     private func presentPopUpcontroller(ID:Int) {
+        
+        disableControls()
+        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let popVC = storyboard.instantiateViewController(withIdentifier: "popupVCID")
         
@@ -237,7 +247,24 @@ class FiltersViewController: UIViewController {
         }
         
         currentPicker = nil
+        
         self.presentedViewController?.dismiss(animated: true, completion: nil)
+        
+        enableControls()
+    }
+    
+    private func disableControls() {
+        applyBTN.isEnabled = false
+        cancelBTN.isEnabled = false
+        applyBTN.alpha = 0.5
+        cancelBTN.alpha = 0.5
+    }
+    
+    private func enableControls() {
+        applyBTN.isEnabled = true
+        cancelBTN.isEnabled = true
+        applyBTN.alpha = 1
+        cancelBTN.alpha = 1
     }
     
     //MARK texfields actions
@@ -286,6 +313,9 @@ extension FiltersViewController: UIPopoverPresentationControllerDelegate {
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return.none
     }
+    
+    func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {   enableControls()
+    }
 }
 
 extension FiltersViewController: UITableViewDelegate {
@@ -317,6 +347,8 @@ extension FiltersViewController: UITableViewDelegate {
         }
         
         self.presentedViewController?.dismiss(animated: true, completion: nil)
+        
+        enableControls()
         
     }
 }

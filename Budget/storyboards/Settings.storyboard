@@ -17,19 +17,49 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="66" translatesAutoresizingMaskIntoConstraints="NO" id="oKC-lw-env">
-                                <rect key="frame" x="50" y="207" width="275" height="248"/>
+                                <rect key="frame" x="37" y="193.5" width="301" height="275"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qdP-1g-c0n">
-                                        <rect key="frame" x="0.0" y="0.0" width="275" height="50"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kGA-qZ-hNm" userLabel="first weekday view">
+                                        <rect key="frame" x="0.0" y="0.0" width="301" height="60"/>
+                                        <subviews>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="1o1-K8-XLs">
+                                                <rect key="frame" x="45" y="27" width="211" height="32"/>
+                                                <segments>
+                                                    <segment title="Понедельник"/>
+                                                    <segment title="Воскресение"/>
+                                                </segments>
+                                                <connections>
+                                                    <action selector="FirstWeekdaySelectorChanged:" destination="VWg-6j-STF" eventType="valueChanged" id="pwP-tY-ZYU"/>
+                                                </connections>
+                                            </segmentedControl>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Первый день недели" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KNA-ra-spx">
+                                                <rect key="frame" x="65" y="4" width="171" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="KNA-ra-spx" firstAttribute="centerX" secondItem="kGA-qZ-hNm" secondAttribute="centerX" id="4ZF-xT-0da"/>
+                                            <constraint firstItem="KNA-ra-spx" firstAttribute="top" secondItem="kGA-qZ-hNm" secondAttribute="top" constant="4" id="9fA-v0-Ecp"/>
+                                            <constraint firstAttribute="width" constant="301" id="AWm-Kc-mf5"/>
+                                            <constraint firstItem="1o1-K8-XLs" firstAttribute="centerX" secondItem="kGA-qZ-hNm" secondAttribute="centerX" id="G2O-Nj-jMu"/>
+                                            <constraint firstAttribute="height" constant="60" id="G9x-2K-ngh"/>
+                                            <constraint firstAttribute="bottom" secondItem="1o1-K8-XLs" secondAttribute="bottom" constant="2" id="I1K-B3-cQT"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qdP-1g-c0n" userLabel="currency view">
+                                        <rect key="frame" x="0.0" y="126" width="301" height="50"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Валюта" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PfE-Ar-pis">
-                                                <rect key="frame" x="31" y="15" width="64" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                <rect key="frame" x="31" y="15" width="90" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="WWW" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4rg-hA-nvv">
-                                                <rect key="frame" x="173" y="6.5" width="68" height="35"/>
+                                                <rect key="frame" x="199" y="6.5" width="68" height="35"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="68" id="vQ2-An-aYY"/>
                                                 </constraints>
@@ -37,7 +67,7 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="4rg-hA-nvv" firstAttribute="leading" secondItem="PfE-Ar-pis" secondAttribute="trailing" constant="78" id="7iq-c8-Zim"/>
                                             <constraint firstItem="4rg-hA-nvv" firstAttribute="centerY" secondItem="qdP-1g-c0n" secondAttribute="centerY" constant="-1" id="9tb-lM-SGr"/>
@@ -48,23 +78,13 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KMc-KL-bCi">
-                                        <rect key="frame" x="0.0" y="116" width="275" height="33"/>
+                                        <rect key="frame" x="0.0" y="242" width="301" height="33"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                        <state key="normal" title="Сброс данных">
+                                        <state key="normal" title="Сброс">
                                             <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </state>
                                         <connections>
                                             <action selector="resetBtnTapped:" destination="VWg-6j-STF" eventType="touchUpInside" id="D9x-gb-axc"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Khn-Fa-xbD">
-                                        <rect key="frame" x="0.0" y="215" width="275" height="33"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                        <state key="normal" title="Удалить все платежи">
-                                            <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="deleteAllPaymentsBtnTapped:" destination="VWg-6j-STF" eventType="touchUpInside" id="HjO-MO-j9m"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -81,12 +101,28 @@
                     <connections>
                         <outlet property="currencyTXT" destination="4rg-hA-nvv" id="Zib-XQ-xkx"/>
                         <outlet property="deleteDataBtn" destination="KMc-KL-bCi" id="9q9-hp-Msn"/>
-                        <outlet property="deletePaymentsBtn" destination="Khn-Fa-xbD" id="bA5-JR-598"/>
+                        <outlet property="firstWeekdaySelector" destination="1o1-K8-XLs" id="0pj-3Z-ava"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yge-0T-LMM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3685.5999999999999" y="1762.6686656671666"/>
+        </scene>
+        <!--Ограничения-->
+        <scene sceneID="HmF-x9-8mJ">
+            <objects>
+                <viewController id="wgR-hB-shz" customClass="LimitsViewController" customModule="Budget" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dK7-Yk-rhO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="yZ2-26-Xeg"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Ограничения" id="tbr-ps-xVy"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="REQ-0P-RaV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1946" y="1826"/>
         </scene>
         <!--Меню-->
         <scene sceneID="VE6-Dh-QBe">
@@ -100,33 +136,43 @@
                                 <rect key="frame" x="130" y="158.5" width="115" height="345"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gec-B5-ZyC">
-                                        <rect key="frame" x="0.0" y="0.0" width="115" height="115"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="115" height="86"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                         <state key="normal" title="Категории">
                                             <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <color key="titleShadowColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
                                             <segue destination="FiX-oI-FGT" kind="show" id="waJ-g6-LlA"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6rg-JQ-Da8">
+                                        <rect key="frame" x="0.0" y="86" width="115" height="86.5"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                        <state key="normal" title="Ограничения">
+                                            <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="wgR-hB-shz" kind="show" id="Avx-bw-DCD"/>
+                                        </connections>
+                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NSM-id-wPD">
-                                        <rect key="frame" x="0.0" y="115" width="115" height="115"/>
+                                        <rect key="frame" x="0.0" y="172.5" width="115" height="86.5"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                         <state key="normal" title="Настройки">
                                             <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <color key="titleShadowColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
                                             <segue destination="VWg-6j-STF" kind="show" id="qqM-oA-rNw"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C0r-hF-39d">
-                                        <rect key="frame" x="0.0" y="230" width="115" height="115"/>
+                                        <rect key="frame" x="0.0" y="259" width="115" height="86"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                         <state key="normal" title="Благодарочки">
                                             <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <color key="titleShadowColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
                                             <segue destination="bIb-uO-TFW" kind="show" id="efk-s3-Gzu"/>

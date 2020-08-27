@@ -17,7 +17,8 @@ class ExpenceReportGraphView: UIView {
     private var startX: CGFloat = 0
     private var startY: CGFloat = 0
 
-    private let weekDays = ["ПН","ВТ","СР","ЧТ","ПТ","СБ","ВС"]
+    private var weekDays = [""]
+//    ["ПН","ВТ","СР","ЧТ","ПТ","СБ","ВС"]
     
     private var values = [Double]()
     
@@ -28,7 +29,19 @@ class ExpenceReportGraphView: UIView {
     private var columnOffset: CGFloat = 0.0
     private var shift = 0
     
+
+    private func updateWeekday() {
+        switch DataManager.shared.getFierstWeekDay() {
+            case .monday:
+                weekDays = Consts.weekDaysForMondayRus
+            case .sunday:
+                weekDays = Consts.weekDaysForSundayEn
+        }
+
+    }
+    
     override func draw(_ rect: CGRect) {
+        
         super.draw(rect)
         
         if let layers = layer.sublayers {
@@ -151,8 +164,6 @@ class ExpenceReportGraphView: UIView {
 
     }
     
-    
-    
     private func drawReportGraph() {
         
         guard !values.isEmpty else {return}
@@ -202,6 +213,9 @@ class ExpenceReportGraphView: UIView {
     }
     
     public func setReportModeAndDisplayGraph(mode: ExpenceReportMode, compareObjects: [EspenceReportCompareObjectModel], shift: Int) {
+        
+        
+        
         reportMode = mode
         self.shift = shift
 
@@ -216,6 +230,9 @@ class ExpenceReportGraphView: UIView {
                 columnOffset = (bounds.width - offset * 2) / 31
             case .week:
                 columnOffset = (bounds.width - offset * 2) / 8
+                
+                updateWeekday()
+            
         }
         
         setNeedsDisplay()

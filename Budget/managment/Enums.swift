@@ -20,6 +20,10 @@ enum CategoryType {
     case subcategory
 }
 
+enum FirstWeekDay: Int {
+    case monday = 0
+    case sunday = 1
+}
 
 
 

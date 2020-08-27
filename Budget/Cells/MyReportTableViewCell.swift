@@ -1,8 +1,9 @@
 
 import UIKit
 
-class ReportTableViewCell: UITableViewCell {
+class MyReportTableViewCell: UITableViewCell {
 
+    
     var paymentType: PaymentType! {
         willSet {
             
@@ -20,7 +21,7 @@ class ReportTableViewCell: UITableViewCell {
         }
     }
     
-    @IBOutlet private weak var typeImageView: UIImageView!
+    @IBOutlet weak var typeImageView: UIImageView!
     
     @IBOutlet weak var valueTF: UILabel!
     
@@ -28,6 +29,7 @@ class ReportTableViewCell: UITableViewCell {
     @IBOutlet weak var subcategoriesTF: UILabel!
     
     @IBOutlet weak var timeTF: UILabel!
+    
     
     func initWith(payment: Payment) {
         paymentType = payment.type
@@ -50,6 +52,5 @@ class ReportTableViewCell: UITableViewCell {
         }
         return str
     }
-
     
 }

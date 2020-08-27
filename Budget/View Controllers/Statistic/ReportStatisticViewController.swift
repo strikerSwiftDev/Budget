@@ -72,7 +72,7 @@ class ReportStatisticViewController: UIViewController {
         reportTableView.delegate = self
         reportTableView.dataSource = self
         
-        let nib = UINib(nibName: "ReportTableViewCell", bundle: nil)
+        let nib = UINib(nibName: "MyReportTableViewCell", bundle: nil)
         reportTableView.register(nib, forCellReuseIdentifier: "ReportTableViewCellId")
         
         reportTableView.tableFooterView = UIView()
@@ -112,7 +112,20 @@ class ReportStatisticViewController: UIViewController {
 //                let weekday = Calendar.current.component(.weekday, from: date) - 2
 //                let targetDate = Calendar.current.date(byAdding: .day, value: -weekday, to: date)!
                 
-                let targetDate = returnTheNearestMonday()
+                
+                let nearestMonday = returnTheNearestMonday()
+                
+                var myDate: Date?
+                
+                switch DataManager.shared.getFierstWeekDay() {
+                    case .monday:
+                        myDate = nearestMonday
+                    case .sunday:
+                        myDate = Calendar.current.date(byAdding: .day, value: -1, to: nearestMonday)
+                }
+                
+                guard let targetDate = myDate else {break}
+                
                 var components = DateComponents()
                 components.year = Calendar.current.component(.year, from: targetDate)
                 components.month = Calendar.current.component(.month, from: targetDate)
@@ -315,7 +328,7 @@ extension ReportStatisticViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ReportTableViewCellId", for: indexPath) as! ReportTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ReportTableViewCellId", for: indexPath) as! MyReportTableViewCell
         let payment = sortedPaymentsArray[indexPath.section][indexPath.row]
         cell.initWith(payment: payment)
 

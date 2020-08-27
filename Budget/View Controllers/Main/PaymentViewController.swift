@@ -65,17 +65,17 @@ class PaymentViewController: UIViewController {
         
         let textFieldToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 35))
         
-        let left = UIBarButtonItem(title: "←", style: .done, target: self, action: #selector(leftButtonDidTap))
-        left.tintColor = .label
-        let right = UIBarButtonItem(title: "→", style: .done, target: self, action: #selector(rightButtonDidTap))
-        right.tintColor = .label
+//        let left = UIBarButtonItem(title: "←", style: .done, target: self, action: #selector(leftButtonDidTap))
+//        left.tintColor = .label
+//        let right = UIBarButtonItem(title: "→", style: .done, target: self, action: #selector(rightButtonDidTap))
+//        right.tintColor = .label
         let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let done: UIBarButtonItem = UIBarButtonItem(title: "Готово", style: .done, target: self, action: #selector(doneButtonDidTap))
         done.tintColor = .label
         
         var items = [UIBarButtonItem]()
-        items.append(left)
-        items.append(right)
+//        items.append(left)
+//        items.append(right)
         items.append(flexSpace)
         items.append(done)
         
@@ -162,6 +162,9 @@ class PaymentViewController: UIViewController {
         subcategoryPicker.isUserInteractionEnabled = false
         addSubcategoryButton.isUserInteractionEnabled = false
         addCategoryBatton.isUserInteractionEnabled = false
+        addSubcategoryButton.alpha = 0.5
+        addCategoryBatton.alpha = 0.5
+        
     }
     
     private func enableUserInteraction() {
@@ -169,6 +172,9 @@ class PaymentViewController: UIViewController {
         subcategoryPicker.isUserInteractionEnabled = true
         addSubcategoryButton.isUserInteractionEnabled = true
         addCategoryBatton.isUserInteractionEnabled = true
+        addSubcategoryButton.alpha = 1
+        addCategoryBatton.alpha = 1
+        
     }
     
     //    MARK: ALERTS
@@ -375,7 +381,10 @@ extension PaymentViewController: UITextFieldDelegate {
         }
     }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if textField.text!.count >= 6 { return false } else { return true }
+        let currentCharacterCount = textField.text?.count ?? 0
+        let newLength = currentCharacterCount + string.count
+
+        return newLength <= 6
     }
     
     

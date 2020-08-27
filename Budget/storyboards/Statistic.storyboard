@@ -221,39 +221,6 @@
             </objects>
             <point key="canvasLocation" x="3021.5999999999999" y="1466.7166416791606"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="e3F-er-dOh">
-            <objects>
-                <viewController id="PSS-Qt-YlH" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="IJr-PD-ibF">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="12.12.1212" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b6v-Yn-HaC">
-                                <rect key="frame" x="16" y="54" width="110" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="00/00/0000" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kwP-XZ-eUV">
-                                <rect key="frame" x="197" y="54" width="107" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemGray2Color" red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="kwP-XZ-eUV" firstAttribute="top" secondItem="OwB-i5-dwk" secondAttribute="top" constant="54" id="GkZ-oq-c0z"/>
-                            <constraint firstItem="b6v-Yn-HaC" firstAttribute="leading" secondItem="OwB-i5-dwk" secondAttribute="leading" constant="16" id="GnM-Qy-CNu"/>
-                            <constraint firstItem="b6v-Yn-HaC" firstAttribute="top" secondItem="OwB-i5-dwk" secondAttribute="top" constant="54" id="Xcr-Fh-JEe"/>
-                            <constraint firstItem="OwB-i5-dwk" firstAttribute="trailing" secondItem="kwP-XZ-eUV" secondAttribute="trailing" constant="16" id="cg0-th-w00"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="OwB-i5-dwk"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="EYi-ju-PU1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="463" y="1431"/>
-        </scene>
         <!--Categories Stat View Controller-->
         <scene sceneID="Rpj-yS-asN">
             <objects>

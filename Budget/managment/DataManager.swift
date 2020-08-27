@@ -23,12 +23,15 @@ class DataManager {
     
     private var shortStringCurrency = ""
     
+    private var firstWeekday = FirstWeekDay.monday
+    
     // userdefaults keys
     private let strKeyForCategories = "categories"
     private let strKeyForSubcategories = "subcategories"
     private let strKeyForFirstLaunchFlag = "launchedBefore"
     private let theVeryFirstDateKey = "theVeryFirstDate"
     private let shortStringCurrencyKey = "shortStringCurrency"
+    private let firstWeekDayKey = "firstWeekDay"
     
     private init () {
         
@@ -131,6 +134,20 @@ class DataManager {
     
     // MARK: DIFFERENT
     
+    func setFirstWeekayTo(weekday: FirstWeekDay) {
+        firstWeekday = weekday
+        
+        UserDefaults.standard.set(weekday.rawValue, forKey: firstWeekDayKey)
+        
+    }
+    
+    func getFierstWeekDay() -> FirstWeekDay {
+        
+        return firstWeekday
+    }
+    
+    //
+    
     func getShortStringCurrency() -> String {
         
         return shortStringCurrency
@@ -141,6 +158,7 @@ class DataManager {
         UserDefaults.standard.set(currency, forKey: shortStringCurrencyKey)
         shortStringCurrency = currency
     }
+    
     
     // MARK: SAVE AND LOAD
     
@@ -167,6 +185,10 @@ class DataManager {
         _ = CoreDataManager.shared
         
         shortStringCurrency = UserDefaults.standard.string(forKey: shortStringCurrencyKey) ?? Consts.defaultStrCurrency
+        let weekdayRawValue = UserDefaults.standard.integer(forKey: firstWeekDayKey)
+        
+        firstWeekday = FirstWeekDay(rawValue: weekdayRawValue) ?? FirstWeekDay.monday
+
         
     }
     
@@ -197,6 +219,8 @@ class DataManager {
         UserDefaults.standard.removeObject(forKey: strKeyForCategories)
         UserDefaults.standard.removeObject(forKey: strKeyForSubcategories)
         UserDefaults.standard.removeObject(forKey: strKeyForFirstLaunchFlag)
+        UserDefaults.standard.removeObject(forKey: firstWeekDayKey)
+        UserDefaults.standard.removeObject(forKey: shortStringCurrencyKey)
         initializeUserData()
     }
     

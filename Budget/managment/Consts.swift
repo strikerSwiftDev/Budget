@@ -13,6 +13,13 @@ class Consts {
 
     static let categorieTitleMaxSymbols = 18
     
+    static let weekDaysForMondayRus = ["ПН","ВТ","СР","ЧТ","ПТ","СБ","ВС"]
+    static let weekDaysForSundayRus = ["ВС","ПН","ВТ","СР","ЧТ","ПТ","СБ"]
+    static let weekDaysForMondayEn = ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"]
+    static let weekDaysForSundayEn = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"]
+    
+    
+    
     static let defaultCategories = ["Еда", "Авто", "Дом", "Работа", "Одежда", "Путешествия"]
     
     static let defaultSubCategories = ["Еда": ["Картошка", "Морковка"],

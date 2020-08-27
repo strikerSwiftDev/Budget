@@ -18,7 +18,7 @@ class ExpenxeReportViewController: UIViewController {
     
     private var startDate = Consts.wrongDate
     private var finishDate = Consts.wrongDate
-    private let theVeryFirsDate = DataManager.shared.getTheVeryFirstDate()
+    private var theVeryFirsDate = Consts.wrongDate
     private let todayDate = Date()
     
     private var values = [EspenceReportCompareObjectModel]()
@@ -47,10 +47,19 @@ class ExpenxeReportViewController: UIViewController {
         navigationController?.navigationBar.tintColor = .label
         navigationItem.largeTitleDisplayMode = .never
         
-        segmentControl.selectedSegmentIndex = 0
         initTableView()
-        counter = 0
+        segmentControl.selectedSegmentIndex = 0
 
+        displayMode = .month
+        
+        counter = 0
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        theVeryFirsDate = DataManager.shared.getTheVeryFirstDate()
+        showReport()
     }
     
     private func initTableView() {
@@ -64,7 +73,7 @@ class ExpenxeReportViewController: UIViewController {
     }
     
     private func showReport() {
-
+        
         activityIndicator.startAnimating()
         
         let filter = calculatedFilterByDates()
@@ -122,7 +131,20 @@ class ExpenxeReportViewController: UIViewController {
         case .week:
 
             let nearestMonday = returnTheNearestMonday()
-            guard let targetDate = Calendar.current.date(byAdding: .day, value: weekDiff, to: nearestMonday) else {break}
+            
+            var myDate: Date?
+            
+            switch DataManager.shared.getFierstWeekDay() {
+                case .monday:
+                    myDate = nearestMonday
+                case .sunday:
+                    myDate = Calendar.current.date(byAdding: .day, value: -1, to: nearestMonday)
+            }
+            
+            guard let myUnwrappedDate = myDate else {break}
+            
+            
+            guard let targetDate = Calendar.current.date(byAdding: .day, value: weekDiff, to: myUnwrappedDate) else {break}
 
             components.year = Calendar.current.component(.year, from: targetDate)
             components.month = Calendar.current.component(.month, from: targetDate)
@@ -167,6 +189,7 @@ class ExpenxeReportViewController: UIViewController {
                 self.activityIndicator.stopAnimating()
                 self.graphView.setReportModeAndDisplayGraph(mode: self.displayMode, compareObjects : self.values, shift: shift)
                 self.tableView.reloadData()
+
             }
             
         }
@@ -197,6 +220,14 @@ class ExpenxeReportViewController: UIViewController {
             case .month:
                 paymentsByTheDay = rawPayments.filter{$0.day == i}
             case .week:
+                
+                switch DataManager.shared.getFierstWeekDay() {
+                case .monday:
+                    paymentsByTheDay = rawPayments.filter{$0.normalWeekDay == i}
+                case .sunday:
+                    paymentsByTheDay = rawPayments.filter{$0.weekDay == i}
+                }
+                
                 paymentsByTheDay = rawPayments.filter{$0.normalWeekDay == i}
             }
             

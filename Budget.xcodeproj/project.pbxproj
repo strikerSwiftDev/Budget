@@ -19,14 +19,17 @@
 		F135E096244A7C9900CA164A /* FiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F135E095244A7C9900CA164A /* FiltersViewController.swift */; };
 		F139B4BC2452A0EB00259C6A /* PaymentsGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F139B4BB2452A0EB00259C6A /* PaymentsGenerator.swift */; };
 		F13B900A24B90336007D9FC0 /* EspenceReportCompareObjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13B900924B90336007D9FC0 /* EspenceReportCompareObjectModel.swift */; };
+		F141D3DD24EAD55C00E24919 /* MyReportTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F141D3DB24EAD55C00E24919 /* MyReportTableViewCell.swift */; };
+		F141D3DE24EAD55C00E24919 /* MyReportTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F141D3DC24EAD55C00E24919 /* MyReportTableViewCell.xib */; };
+		F15D61B224F689E100CE8EB0 /* LimitModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15D61B124F689E100CE8EB0 /* LimitModel.swift */; };
+		F15D61B424F6CE6200CE8EB0 /* LimitsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15D61B324F6CE6200CE8EB0 /* LimitsViewController.swift */; };
+		F15D61B624F6DEAB00CE8EB0 /* LimitsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15D61B524F6DEAB00CE8EB0 /* LimitsManager.swift */; };
 		F16C01B7243B57AB0030608C /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16C01B6243B57AB0030608C /* MenuViewController.swift */; };
 		F16C01BA243B59380030608C /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F16C01B9243B59380030608C /* Settings.storyboard */; };
 		F1704C9624A6DA300070CE59 /* Statistic.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1704C9524A6DA300070CE59 /* Statistic.storyboard */; };
 		F1738ABB244F0227007392C2 /* FiltersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1738ABA244F0227007392C2 /* FiltersModel.swift */; };
 		F17957F3244CA55800399D39 /* ReportStatisticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17957F2244CA55800399D39 /* ReportStatisticViewController.swift */; };
 		F17957F6244D3EFB00399D39 /* GraphReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17957F5244D3EFB00399D39 /* GraphReportViewController.swift */; };
-		F17957F9244D578500399D39 /* ReportTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17957F7244D578500399D39 /* ReportTableViewCell.swift */; };
-		F17957FA244D578500399D39 /* ReportTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F17957F8244D578500399D39 /* ReportTableViewCell.xib */; };
 		F196462C2460AC450056B0AE /* CompareObjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F196462B2460AC450056B0AE /* CompareObjectModel.swift */; };
 		F1A57CF0244BF551005514EA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1A57CEF244BF551005514EA /* Main.storyboard */; };
 		F1A5A31324B016D500EA7671 /* ExpenceGraphReportTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A5A31124B016D500EA7671 /* ExpenceGraphReportTableViewCell.swift */; };
@@ -64,14 +67,17 @@
 		F135E095244A7C9900CA164A /* FiltersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersViewController.swift; sourceTree = "<group>"; };
 		F139B4BB2452A0EB00259C6A /* PaymentsGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentsGenerator.swift; sourceTree = "<group>"; };
 		F13B900924B90336007D9FC0 /* EspenceReportCompareObjectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EspenceReportCompareObjectModel.swift; sourceTree = "<group>"; };
+		F141D3DB24EAD55C00E24919 /* MyReportTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyReportTableViewCell.swift; sourceTree = "<group>"; };
+		F141D3DC24EAD55C00E24919 /* MyReportTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyReportTableViewCell.xib; sourceTree = "<group>"; };
+		F15D61B124F689E100CE8EB0 /* LimitModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LimitModel.swift; sourceTree = "<group>"; };
+		F15D61B324F6CE6200CE8EB0 /* LimitsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LimitsViewController.swift; sourceTree = "<group>"; };
+		F15D61B524F6DEAB00CE8EB0 /* LimitsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LimitsManager.swift; sourceTree = "<group>"; };
 		F16C01B6243B57AB0030608C /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		F16C01B9243B59380030608C /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		F1704C9524A6DA300070CE59 /* Statistic.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Statistic.storyboard; sourceTree = "<group>"; };
 		F1738ABA244F0227007392C2 /* FiltersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersModel.swift; sourceTree = "<group>"; };
 		F17957F2244CA55800399D39 /* ReportStatisticViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportStatisticViewController.swift; sourceTree = "<group>"; };
 		F17957F5244D3EFB00399D39 /* GraphReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphReportViewController.swift; sourceTree = "<group>"; };
-		F17957F7244D578500399D39 /* ReportTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportTableViewCell.swift; sourceTree = "<group>"; };
-		F17957F8244D578500399D39 /* ReportTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReportTableViewCell.xib; sourceTree = "<group>"; };
 		F196462B2460AC450056B0AE /* CompareObjectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompareObjectModel.swift; sourceTree = "<group>"; };
 		F1A57CEF244BF551005514EA /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		F1A5A31124B016D500EA7671 /* ExpenceGraphReportTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenceGraphReportTableViewCell.swift; sourceTree = "<group>"; };
@@ -124,12 +130,12 @@
 			children = (
 				F1240D30246033FA0063B789 /* GraphReportTableViewCell.swift */,
 				F1240D31246033FA0063B789 /* GraphReportTableViewCell.xib */,
-				F17957F7244D578500399D39 /* ReportTableViewCell.swift */,
-				F17957F8244D578500399D39 /* ReportTableViewCell.xib */,
 				F1A5A31124B016D500EA7671 /* ExpenceGraphReportTableViewCell.swift */,
 				F1A5A31224B016D500EA7671 /* ExpenceGraphReportTableViewCell.xib */,
 				F135B5E624C9713E008CF147 /* CategoriesStatTableViewCell.swift */,
 				F135B5E724C9713E008CF147 /* CategoriesStatTableViewCell.xib */,
+				F141D3DB24EAD55C00E24919 /* MyReportTableViewCell.swift */,
+				F141D3DC24EAD55C00E24919 /* MyReportTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -161,6 +167,7 @@
 				F1C4BBD424283F01007F7452 /* CategoriesViewController.swift */,
 				F1C4BBC82427FB17007F7452 /* SettingsViewController.swift */,
 				F1F3F3A3243BABC200149C6A /* ThanksViewController.swift */,
+				F15D61B324F6CE6200CE8EB0 /* LimitsViewController.swift */,
 			);
 			path = settings;
 			sourceTree = "<group>";
@@ -194,6 +201,7 @@
 				F196462B2460AC450056B0AE /* CompareObjectModel.swift */,
 				F13B900924B90336007D9FC0 /* EspenceReportCompareObjectModel.swift */,
 				F1B3A20224D5BD9A00D7B49B /* StatReportObjectModel.swift */,
+				F15D61B124F689E100CE8EB0 /* LimitModel.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -206,6 +214,7 @@
 				F1D0985524400BB100759722 /* CoreDataManager.swift */,
 				F1C4BBD024280472007F7452 /* Enums.swift */,
 				F139B4BB2452A0EB00259C6A /* PaymentsGenerator.swift */,
+				F15D61B524F6DEAB00CE8EB0 /* LimitsManager.swift */,
 			);
 			path = managment;
 			sourceTree = "<group>";
@@ -314,6 +323,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F1F6464A2426E92C00A343A4 /* LaunchScreen.storyboard in Resources */,
+				F141D3DE24EAD55C00E24919 /* MyReportTableViewCell.xib in Resources */,
 				F135B5E924C9713E008CF147 /* CategoriesStatTableViewCell.xib in Resources */,
 				F1A57CF0244BF551005514EA /* Main.storyboard in Resources */,
 				F1F646472426E92C00A343A4 /* Assets.xcassets in Resources */,
@@ -322,7 +332,6 @@
 				F111A6092433E1D2000F51E5 /* UserMessageView.xib in Resources */,
 				F16C01BA243B59380030608C /* Settings.storyboard in Resources */,
 				F1A5A31424B016D500EA7671 /* ExpenceGraphReportTableViewCell.xib in Resources */,
-				F17957FA244D578500399D39 /* ReportTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,9 +348,11 @@
 				F1C4BBD524283F01007F7452 /* CategoriesViewController.swift in Sources */,
 				F1F646452426E92900A343A4 /* Budget.xcdatamodeld in Sources */,
 				F1A5A31324B016D500EA7671 /* ExpenceGraphReportTableViewCell.swift in Sources */,
+				F15D61B224F689E100CE8EB0 /* LimitModel.swift in Sources */,
 				F1D0985624400BB200759722 /* CoreDataManager.swift in Sources */,
 				F1C4BBD124280472007F7452 /* Enums.swift in Sources */,
 				F135B5E524C9297A008CF147 /* CategoriesStatViewController.swift in Sources */,
+				F15D61B624F6DEAB00CE8EB0 /* LimitsManager.swift in Sources */,
 				F1C4BBC92427FB17007F7452 /* SettingsViewController.swift in Sources */,
 				F1F6463D2426E92900A343A4 /* SceneDelegate.swift in Sources */,
 				F111A60B2433EB9F000F51E5 /* UserMessageView.swift in Sources */,
@@ -349,7 +360,6 @@
 				F1E40F0924AEB0CC00E029CB /* ExpenxeReportViewController.swift in Sources */,
 				F16C01B7243B57AB0030608C /* MenuViewController.swift in Sources */,
 				F17957F6244D3EFB00399D39 /* GraphReportViewController.swift in Sources */,
-				F17957F9244D578500399D39 /* ReportTableViewCell.swift in Sources */,
 				F196462C2460AC450056B0AE /* CompareObjectModel.swift in Sources */,
 				F1C4BBC72427FB03007F7452 /* StatisticViewController.swift in Sources */,
 				F13B900A24B90336007D9FC0 /* EspenceReportCompareObjectModel.swift in Sources */,
@@ -358,8 +368,10 @@
 				F1B3A20324D5BD9A00D7B49B /* StatReportObjectModel.swift in Sources */,
 				F1235B402433EEEA00A16293 /* UserMessenger.swift in Sources */,
 				F1F3F3A4243BABC200149C6A /* ThanksViewController.swift in Sources */,
+				F141D3DD24EAD55C00E24919 /* MyReportTableViewCell.swift in Sources */,
 				F135B5E824C9713E008CF147 /* CategoriesStatTableViewCell.swift in Sources */,
 				F113A5F1245EE94200DBF1D5 /* GraphView.swift in Sources */,
+				F15D61B424F6CE6200CE8EB0 /* LimitsViewController.swift in Sources */,
 				F1C4BBCF2428031A007F7452 /* DataManager.swift in Sources */,
 				F1738ABB244F0227007392C2 /* FiltersModel.swift in Sources */,
 				F135E096244A7C9900CA164A /* FiltersViewController.swift in Sources */,
