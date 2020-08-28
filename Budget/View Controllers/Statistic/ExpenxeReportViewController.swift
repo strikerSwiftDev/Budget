@@ -228,7 +228,6 @@ class ExpenxeReportViewController: UIViewController {
                     paymentsByTheDay = rawPayments.filter{$0.weekDay == i}
                 }
                 
-                paymentsByTheDay = rawPayments.filter{$0.normalWeekDay == i}
             }
             
             let date = Calendar.current.date(byAdding: .day, value: (i - 1), to: startDate) ?? Consts.wrongDate

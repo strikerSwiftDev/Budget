@@ -25,5 +25,11 @@ enum FirstWeekDay: Int {
     case sunday = 1
 }
 
+enum LocaleIdentificator {
+    case russian
+    case english
+}
+
+
 
 

@@ -17,10 +17,41 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="66" translatesAutoresizingMaskIntoConstraints="NO" id="oKC-lw-env">
-                                <rect key="frame" x="37" y="193.5" width="301" height="275"/>
+                                <rect key="frame" x="37" y="130.5" width="301" height="401"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kGA-qZ-hNm" userLabel="first weekday view">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dhk-sG-zki" userLabel="ui style view">
                                         <rect key="frame" x="0.0" y="0.0" width="301" height="60"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Темная тема" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s1M-BC-hEB">
+                                                <rect key="frame" x="98" y="4" width="105" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="SgZ-AG-y6x">
+                                                <rect key="frame" x="10" y="27" width="281" height="32"/>
+                                                <segments>
+                                                    <segment title="Устройство"/>
+                                                    <segment title="Светлая"/>
+                                                    <segment title="Темная"/>
+                                                </segments>
+                                                <connections>
+                                                    <action selector="uiStyleSegmentControlChanged:" destination="VWg-6j-STF" eventType="valueChanged" id="C8g-IY-emo"/>
+                                                </connections>
+                                            </segmentedControl>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="6Ai-UN-93k"/>
+                                            <constraint firstItem="SgZ-AG-y6x" firstAttribute="centerX" secondItem="dhk-sG-zki" secondAttribute="centerX" id="Pxb-q3-xGb"/>
+                                            <constraint firstAttribute="width" constant="301" id="gbF-qQ-3r9"/>
+                                            <constraint firstItem="s1M-BC-hEB" firstAttribute="top" secondItem="dhk-sG-zki" secondAttribute="top" constant="4" id="hOC-22-CgA"/>
+                                            <constraint firstItem="SgZ-AG-y6x" firstAttribute="top" secondItem="s1M-BC-hEB" secondAttribute="bottom" constant="2.5" id="l8s-z0-rUn"/>
+                                            <constraint firstItem="s1M-BC-hEB" firstAttribute="centerX" secondItem="dhk-sG-zki" secondAttribute="centerX" id="lex-kM-OJ6"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kGA-qZ-hNm" userLabel="first weekday view">
+                                        <rect key="frame" x="0.0" y="126" width="301" height="60"/>
                                         <subviews>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="1o1-K8-XLs">
                                                 <rect key="frame" x="45" y="27" width="211" height="32"/>
@@ -50,7 +81,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qdP-1g-c0n" userLabel="currency view">
-                                        <rect key="frame" x="0.0" y="126" width="301" height="50"/>
+                                        <rect key="frame" x="0.0" y="252" width="301" height="50"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Валюта" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PfE-Ar-pis">
                                                 <rect key="frame" x="31" y="15" width="90" height="20.5"/>
@@ -78,7 +109,7 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KMc-KL-bCi">
-                                        <rect key="frame" x="0.0" y="242" width="301" height="33"/>
+                                        <rect key="frame" x="0.0" y="368" width="301" height="33"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                         <state key="normal" title="Сброс">
                                             <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -102,6 +133,7 @@
                         <outlet property="currencyTXT" destination="4rg-hA-nvv" id="Zib-XQ-xkx"/>
                         <outlet property="deleteDataBtn" destination="KMc-KL-bCi" id="9q9-hp-Msn"/>
                         <outlet property="firstWeekdaySelector" destination="1o1-K8-XLs" id="0pj-3Z-ava"/>
+                        <outlet property="uiStyleSegmentControl" destination="SgZ-AG-y6x" id="nsM-rj-46D"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yge-0T-LMM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

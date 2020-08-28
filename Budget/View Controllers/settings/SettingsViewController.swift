@@ -10,6 +10,7 @@ class SettingsViewController: UIViewController {
     
     @IBOutlet weak var firstWeekdaySelector: UISegmentedControl!
     
+    @IBOutlet weak var uiStyleSegmentControl: UISegmentedControl!
     
     private var stringCurrency = ""
     
@@ -32,8 +33,14 @@ class SettingsViewController: UIViewController {
         
         currencyTXT.text = stringCurrency
         firstWeekdaySelector.selectedSegmentIndex = DataManager.shared.getFierstWeekDay().rawValue
+        uiStyleSegmentControl.selectedSegmentIndex = DataManager.shared.getUserinterfaceStyleIndex()
         
     }
+    
+    @IBAction func uiStyleSegmentControlChanged(_ sender: Any) {
+        DataManager.shared.setUserInterfaceStyleByIndex(index: uiStyleSegmentControl.selectedSegmentIndex)
+    }
+    
 
     @IBAction func FirstWeekdaySelectorChanged(_ sender: Any) {
         let firstWeekDay = FirstWeekDay(rawValue: firstWeekdaySelector.selectedSegmentIndex) ?? FirstWeekDay.monday

@@ -184,9 +184,9 @@
 			isa = PBXGroup;
 			children = (
 				F135E095244A7C9900CA164A /* FiltersViewController.swift */,
+				F17957F2244CA55800399D39 /* ReportStatisticViewController.swift */,
 				F1C4BBC62427FB03007F7452 /* StatisticViewController.swift */,
 				F17957F5244D3EFB00399D39 /* GraphReportViewController.swift */,
-				F17957F2244CA55800399D39 /* ReportStatisticViewController.swift */,
 				F1E40F0824AEB0CC00E029CB /* ExpenxeReportViewController.swift */,
 				F135B5E424C9297A008CF147 /* CategoriesStatViewController.swift */,
 			);

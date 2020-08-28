@@ -31,11 +31,24 @@ class ExpenceReportGraphView: UIView {
     
 
     private func updateWeekday() {
+        
         switch DataManager.shared.getFierstWeekDay() {
             case .monday:
-                weekDays = Consts.weekDaysForMondayRus
+                switch DataManager.shared.getLocale() {
+                    case .russian:
+                        weekDays = Consts.weekDaysForMondayRus
+                    case .english:
+                        weekDays = Consts.weekDaysForMondayEn
+            }
+            
             case .sunday:
-                weekDays = Consts.weekDaysForSundayEn
+                switch DataManager.shared.getLocale() {
+                    case .russian:
+                        weekDays = Consts.weekDaysForSundayRus
+                    case .english:
+                        weekDays = Consts.weekDaysForSundayEn
+            }
+
         }
 
     }

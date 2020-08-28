@@ -1,17 +1,19 @@
 
 import Foundation
 
+import UIKit
+
 class DataManager {
     static let shared = DataManager()
   
     private var categories = [String]() {
         didSet {
-            UserDefaults.standard.set(categories, forKey: strKeyForCategories)
+            UserDefaults.standard.set(categories, forKey: categoriesUserDefaultsKey)
         }
     }
     private var subCategories = [String:[String]]() {
         didSet {
-            UserDefaults.standard.set(subCategories, forKey: strKeyForSubcategories)
+            UserDefaults.standard.set(subCategories, forKey: subcategoriesUserDefaultsKey)
         }
     }
     
@@ -25,16 +27,54 @@ class DataManager {
     
     private var firstWeekday = FirstWeekDay.monday
     
+    private var locale = LocaleIdentificator.english
+    
+    private var userinterfaceStyleIndex = 1
+    
     // userdefaults keys
-    private let strKeyForCategories = "categories"
-    private let strKeyForSubcategories = "subcategories"
-    private let strKeyForFirstLaunchFlag = "launchedBefore"
-    private let theVeryFirstDateKey = "theVeryFirstDate"
-    private let shortStringCurrencyKey = "shortStringCurrency"
-    private let firstWeekDayKey = "firstWeekDay"
+    private let categoriesUserDefaultsKey = "categories"
+    private let subcategoriesUserDefaultsKey = "subcategories"
+    private let firstLaunchFlagUserDefaultsKey = "launchedBefore"
+    private let theVeryFirstDateUserDefaultsKey = "theVeryFirstDate"
+    private let shortStringCurrencyUserDefaultsKey = "shortStringCurrency"
+    private let firstWeekDayUserDefaultsKey = "firstWeekDay"
+    private let userinterfaceStyleIndexUserDefaultsKey = "userinterfaceStyleIndex"
     
     private init () {
         
+        
+    }
+//MARK INIT
+    
+    //вызывать метод в первую очередь
+    func initializeUserData () {
+        
+        if applicationLaunchedBefore() {
+            loadSimpleData()
+        } else {
+            initializeFirtLaunch()
+            UserDefaults.standard.set(true, forKey: firstLaunchFlagUserDefaultsKey)
+
+        }
+        
+        if let startDate = UserDefaults.standard.object(forKey: theVeryFirstDateUserDefaultsKey) as? Date
+        {
+            theVeryFirstDate = startDate
+            
+        } else {
+            theVeryFirstDate = Date()
+            UserDefaults.standard.set(theVeryFirstDate, forKey: theVeryFirstDateUserDefaultsKey)
+        }
+        
+        _ = CoreDataManager.shared
+        
+        shortStringCurrency = UserDefaults.standard.string(forKey: shortStringCurrencyUserDefaultsKey) ?? Consts.defaultStrCurrency
+        let weekdayRawValue = UserDefaults.standard.integer(forKey: firstWeekDayUserDefaultsKey)
+        
+        firstWeekday = FirstWeekDay(rawValue: weekdayRawValue) ?? FirstWeekDay.monday
+        
+        userinterfaceStyleIndex = UserDefaults.standard.integer(forKey: userinterfaceStyleIndexUserDefaultsKey)
+        setUserInterfaceStyleByIndex(index: userinterfaceStyleIndex)
         
     }
     
@@ -129,15 +169,49 @@ class DataManager {
     
     func addPayment(payment: Payment) {
         payments.append(payment)
-//        print(payment)
     }
     
     // MARK: DIFFERENT
     
+    func setUserInterfaceStyleByIndex(index: Int) {
+        
+        userinterfaceStyleIndex = index
+        
+        UserDefaults.standard.set(userinterfaceStyleIndex, forKey: userinterfaceStyleIndexUserDefaultsKey)
+        
+        guard let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate else {
+          fatalError("could not get scene delegate ")
+        }
+        
+        let style = UIUserInterfaceStyle(rawValue: userinterfaceStyleIndex) ?? UIUserInterfaceStyle.unspecified
+
+        sceneDelegate.setUserInterfaceStyleTo(style: style)
+
+    }
+    
+    func getUserinterfaceStyleIndex() -> Int {
+        return userinterfaceStyleIndex
+    }
+    
+    func setLocale(newLocale:String) {
+        
+        if newLocale.hasPrefix("ru") || newLocale.hasPrefix("uk")  {
+            locale = .russian
+        } else {
+            locale = .english
+        }
+        
+        
+    }
+    
+    func getLocale() -> LocaleIdentificator {
+        return locale
+    }
+    
     func setFirstWeekayTo(weekday: FirstWeekDay) {
         firstWeekday = weekday
         
-        UserDefaults.standard.set(weekday.rawValue, forKey: firstWeekDayKey)
+        UserDefaults.standard.set(weekday.rawValue, forKey: firstWeekDayUserDefaultsKey)
         
     }
     
@@ -155,49 +229,21 @@ class DataManager {
     
     func saveNewShortStringCurrency(currency: String) {
         
-        UserDefaults.standard.set(currency, forKey: shortStringCurrencyKey)
+        UserDefaults.standard.set(currency, forKey: shortStringCurrencyUserDefaultsKey)
         shortStringCurrency = currency
-    }
-    
-    
-    // MARK: SAVE AND LOAD
-    
-    //вызывать метод в первую очередь
-    func initializeUserData () {
-        
-        if applicationLaunchedBefore() {
-            loadSimpleData()
-        } else {
-            initializeFirtLaunch()
-            UserDefaults.standard.set(true, forKey: strKeyForFirstLaunchFlag)
-
-        }
-        
-        if let startDate = UserDefaults.standard.object(forKey: theVeryFirstDateKey) as? Date
-        {
-            theVeryFirstDate = startDate
-            
-        } else {
-            theVeryFirstDate = Date()
-            UserDefaults.standard.set(theVeryFirstDate, forKey: theVeryFirstDateKey)
-        }
-        
-        _ = CoreDataManager.shared
-        
-        shortStringCurrency = UserDefaults.standard.string(forKey: shortStringCurrencyKey) ?? Consts.defaultStrCurrency
-        let weekdayRawValue = UserDefaults.standard.integer(forKey: firstWeekDayKey)
-        
-        firstWeekday = FirstWeekDay(rawValue: weekdayRawValue) ?? FirstWeekDay.monday
-
-        
     }
     
     func getTheVeryFirstDate() -> Date {
         return theVeryFirstDate
     }
     
+    
+    // MARK: SAVE AND LOAD
+    
+
+    
     private func applicationLaunchedBefore() -> Bool {
-        return UserDefaults.standard.bool(forKey: strKeyForFirstLaunchFlag)
+        return UserDefaults.standard.bool(forKey: firstLaunchFlagUserDefaultsKey)
     }
     
     private func initializeFirtLaunch () {
@@ -206,21 +252,17 @@ class DataManager {
     }
     
     func loadSimpleData() {
-        categories = UserDefaults.standard.object(forKey: strKeyForCategories) as? [String] ?? [String]()
-        subCategories = UserDefaults.standard.object(forKey: strKeyForSubcategories) as? [String: [String]] ?? [String: [String]]()
+        categories = UserDefaults.standard.object(forKey: categoriesUserDefaultsKey) as? [String] ?? [String]()
+        subCategories = UserDefaults.standard.object(forKey: subcategoriesUserDefaultsKey) as? [String: [String]] ?? [String: [String]]()
     }
-    
-//    func saveSimpleData () {
-//        UserDefaults.standard.set(categories, forKey: "categories")
-//        UserDefaults.standard.set(subCategories, forKey: "subcategories")
-//    }
-    
+      
     func resetSimpleData() {
-        UserDefaults.standard.removeObject(forKey: strKeyForCategories)
-        UserDefaults.standard.removeObject(forKey: strKeyForSubcategories)
-        UserDefaults.standard.removeObject(forKey: strKeyForFirstLaunchFlag)
-        UserDefaults.standard.removeObject(forKey: firstWeekDayKey)
-        UserDefaults.standard.removeObject(forKey: shortStringCurrencyKey)
+        UserDefaults.standard.removeObject(forKey: categoriesUserDefaultsKey)
+        UserDefaults.standard.removeObject(forKey: subcategoriesUserDefaultsKey)
+        UserDefaults.standard.removeObject(forKey: firstLaunchFlagUserDefaultsKey)
+        UserDefaults.standard.removeObject(forKey: firstWeekDayUserDefaultsKey)
+        UserDefaults.standard.removeObject(forKey: shortStringCurrencyUserDefaultsKey)
+        UserDefaults.standard.removeObject(forKey: userinterfaceStyleIndexUserDefaultsKey)
         initializeUserData()
     }
     
