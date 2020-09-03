@@ -23,6 +23,9 @@ class PaymentViewController: UIViewController {
     private var selectedSubCategory = ""
     private var currentPaymentValue = 0.0
     
+    private var limits = [LimitModel]()
+    private var expences = [(String, Double)]()
+    
     private let titleMaxSymbols = Consts.categorieTitleMaxSymbols
     
     
@@ -30,7 +33,7 @@ class PaymentViewController: UIViewController {
         super.viewDidLoad()
         
         DataManager.shared.initializeUserData()
-        
+        initLimitManager()
         txt.keyboardType = .decimalPad
         txt.text = "0"
         txt.delegate = self
@@ -41,15 +44,31 @@ class PaymentViewController: UIViewController {
         subcategoryPicker.delegate = self
         subcategoryPicker.dataSource = self
         
+        
 //        categories = DataManager.shared.getCategories()
 //        selectedCategory = categories[0]
     }
     
+    private func initLimitManager() {
+        // background tread
+        LimitsManager.shared.initLimitsAndExpences()
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+   
+        limits = LimitsManager.shared.getLimits()
+        expences = LimitsManager.shared.getExpences()
+        
+        if DataManager.shared.isNewMonth() {
+            UserMessenger.shared.showUserMessage(vc: self, message: "Установите новые ограничения")
+        }
+        
+//        print("NEW MONTH IS  - \(DataManager.shared.isNewMonth())")
         
         updateCategoriesPickerData()
         updateSubcategoryPickerData()
+//обновить инфу об ограничениях
         
     }
     
@@ -138,6 +157,9 @@ class PaymentViewController: UIViewController {
             let payment = Payment(type: type, category: selectedCategory, subcategory: selectedSubCategory, value: currentPaymentValue, paymentDate: date)
             
             CoreDataManager.shared.savePayment(payment: payment)
+            if type == .expence {
+                LimitsManager.shared.updateExpencesAfterPayment(category: selectedCategory, value: currentPaymentValue)
+            }
             UserMessenger.shared.showUserMessage(vc: self, message: "Платеж принят")
             
             txt.text = "0"

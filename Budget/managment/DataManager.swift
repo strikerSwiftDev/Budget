@@ -39,6 +39,7 @@ class DataManager {
     private let shortStringCurrencyUserDefaultsKey = "shortStringCurrency"
     private let firstWeekDayUserDefaultsKey = "firstWeekDay"
     private let userinterfaceStyleIndexUserDefaultsKey = "userinterfaceStyleIndex"
+    private let newMonthCheckUserDefaultsKey = "newMonthCheck"
     
     private init () {
         
@@ -165,13 +166,44 @@ class DataManager {
         return false
     }
     
-    //MARK: PAYMENTS
+//MARK: PAYMENTS
     
     func addPayment(payment: Payment) {
         payments.append(payment)
     }
     
-    // MARK: DIFFERENT
+// MARK: DIFFERENT
+    
+    func isNewMonth() -> Bool {
+        
+        var result = false
+        
+        let date = Date()
+        let currentYear = Calendar.current.component(.year, from: date)
+        let currentMonth = Calendar.current.component(.month, from: date)
+        
+        let checkString = String(currentYear) + String(currentMonth)
+        
+        if let storedCheckString = UserDefaults.standard.string(forKey: newMonthCheckUserDefaultsKey) {
+            
+            if checkString != storedCheckString {
+                UserDefaults.standard.removeObject(forKey: newMonthCheckUserDefaultsKey)
+                UserDefaults.standard.set(checkString, forKey: newMonthCheckUserDefaultsKey)
+                LimitsManager.shared.proceedNewMonth()
+                result = true
+            } else {
+                result = false
+            }
+            
+            
+        } else {
+            
+            UserDefaults.standard.set(checkString, forKey: newMonthCheckUserDefaultsKey)
+            result = true
+        }
+        
+        return result
+    }
     
     func setUserInterfaceStyleByIndex(index: Int) {
         
@@ -263,6 +295,9 @@ class DataManager {
         UserDefaults.standard.removeObject(forKey: firstWeekDayUserDefaultsKey)
         UserDefaults.standard.removeObject(forKey: shortStringCurrencyUserDefaultsKey)
         UserDefaults.standard.removeObject(forKey: userinterfaceStyleIndexUserDefaultsKey)
+        UserDefaults.standard.removeObject(forKey: newMonthCheckUserDefaultsKey)
+        LimitsManager.shared.deleteAllLimits()
+        
         initializeUserData()
     }
     

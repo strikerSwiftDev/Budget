@@ -2,16 +2,16 @@
 import Foundation
 
 
-struct LimitModel {
+struct LimitModel: Encodable, Decodable {
     
-    let cateory: String
+    let category: String
     let value: Double
     let regular: Bool
     
     
     init(category: String, value: Double, regular:Bool) {
         
-        self.cateory = category
+        self.category = category
         self.value = value
         self.regular = regular
         
