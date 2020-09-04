@@ -81,15 +81,18 @@ class DataManager {
     
 //MARK: categories
 
-    func addCtegory(title: String){
-        categories.insert(title, at: 0)
-        subCategories[title] = []
+    func addCategory(category: String){
+        categories.insert(category, at: 0)
+        subCategories[category] = []
+        LimitsManager.shared.addNewExpences(category: category)
+
     }
     
     func delete(category:String, row:Int) {
         if categories[row] == category {
             categories.remove(at: row)
             subCategories[category] = nil
+            LimitsManager.shared.deleteExpenceFor(category: category)
         }else {
             print("ошибка - удаляемая категория не соответсвует позиции в массиве")
         }
@@ -118,7 +121,6 @@ class DataManager {
     //    MARK subcategories
     
     func addSubCtegory(title: String, forCategory: String) {
-        
         if var subcategories = subCategories[forCategory] {
             subcategories.insert(title, at: 0)
             subCategories[forCategory] = subcategories

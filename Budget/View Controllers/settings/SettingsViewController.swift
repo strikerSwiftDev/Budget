@@ -107,6 +107,7 @@ class SettingsViewController: UIViewController {
             
             CoreDataManager.shared.deleteAllPayments()
             DataManager.shared.resetSimpleData()
+            LimitsManager.shared.reset()
             self.updateVisualData()
             UserMessenger.shared.showUserMessage(vc: self, message: "Данные сброшены")
             

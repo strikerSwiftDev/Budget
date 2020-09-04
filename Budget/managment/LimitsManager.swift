@@ -7,8 +7,9 @@ class LimitsManager {
     private let limitsUserDefaultKey = "limitsUserDefaultKey"
     
     private var limits = [LimitModel]()
-    private var expenceSumm = [(String, Double)]()
+    private var expenceByCategories = [(String, Double)]()
     
+    var limitsWasChanged = true
     
     func initLimitsAndExpences () {
         uploadMonthExpences()
@@ -27,14 +28,7 @@ class LimitsManager {
         }
 
     }
-    
-    private func addNew(category: String) {
-        if !category.isEmpty {
-            let newCategory = (category, 0.0)
-            expenceSumm.append(newCategory)
-        }
-    }
-    
+
     private func uploadMonthExpences() {
         // use bacground tread only
         
@@ -58,7 +52,7 @@ class LimitsManager {
     }
     
     private func convertPaymentsToExpenceSumm(payments: [Payment]) {
-        expenceSumm = []
+        expenceByCategories = []
         let categories = DataManager.shared.getCategories()
         
         for category in categories {
@@ -67,7 +61,7 @@ class LimitsManager {
             
             let value = filteredArr.reduce(0, {$0 + $1.value})
             let obj = (category, value)
-            expenceSumm.append(obj)
+            expenceByCategories.append(obj)
             
         }
         
@@ -75,20 +69,51 @@ class LimitsManager {
     
     func updateExpencesAfterPayment(category: String, value: Double) {
         
-        var newExpenceSum = expenceSumm.filter() {$0.0 != category}
-        let expences = expenceSumm.filter(){$0.0 == category}
+        var newExpenceSum = expenceByCategories.filter() {$0.0 != category}
+        let expences = expenceByCategories.filter(){$0.0 == category}
         guard let expence = expences.first else {return}
         
         let newValue = expence.1 + value
         let newExpence = (category, newValue)
         
         newExpenceSum.append(newExpence)
-        expenceSumm = newExpenceSum
+        expenceByCategories = newExpenceSum
  
     }
     
+    private func reSaveLimits() {
+        UserDefaults.standard.removeObject(forKey: limitsUserDefaultKey)
+
+        let encoder = JSONEncoder()
+            if let encoded = try? encoder.encode(limits){
+            UserDefaults.standard.set(encoded, forKey: limitsUserDefaultKey)
+        }
+
+    }
+    
+// MARK: OPENS
+    
     func proceedNewMonth() {
         deleteAllNotRegularLimits()
+    }
+    
+    
+    func addNewExpences(category: String) {
+        if !category.isEmpty {
+            let newCategory = (category, 0.0)
+            expenceByCategories.append(newCategory)
+        }
+    }
+    
+    func deleteExpenceFor(category: String) {
+        let newExpences = expenceByCategories.filter() {$0.0 != category}
+        expenceByCategories = newExpences
+        deleteLimit(for: category)
+    }
+    
+    func reset() {
+        deleteAllLimits()
+        expenceByCategories = []
     }
     
     func deleteAllLimits() {
@@ -114,22 +139,12 @@ class LimitsManager {
         reSaveLimits()
     }
     
-    private func reSaveLimits() {
-        UserDefaults.standard.removeObject(forKey: limitsUserDefaultKey)
-
-        let encoder = JSONEncoder()
-            if let encoded = try? encoder.encode(limits){
-            UserDefaults.standard.set(encoded, forKey: limitsUserDefaultKey)
-        }
-
-    }
-    
     func getLimits() -> [LimitModel] {
         return limits
     }
     
     func getExpences() -> [(String, Double)] {
-        return expenceSumm
+        return expenceByCategories
     }
     
     

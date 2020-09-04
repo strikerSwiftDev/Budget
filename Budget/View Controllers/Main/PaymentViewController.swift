@@ -6,12 +6,16 @@ class PaymentViewController: UIViewController {
     @IBOutlet weak var txt: UITextField!
     @IBOutlet weak var categoryPicker: UIPickerView!
     
-//    @IBOutlet weak var picker: UIPickerView!
     @IBOutlet weak var subcategoryPicker: UIPickerView!
     
     @IBOutlet weak var addSubcategoryButton: UIButton!
     
     @IBOutlet weak var addCategoryBatton: UIButton!
+    
+    @IBOutlet weak var limitView: UIView!
+    @IBOutlet weak var restLabel: UILabel!
+    @IBOutlet weak var restTitleLabel: UILabel!
+
     
     private let defaultSubcategory = Consts.subcategoriesEmptyPlaceholder
     private let defaultCategory = Consts.categoriesEmptyPlaceholder
@@ -58,17 +62,13 @@ class PaymentViewController: UIViewController {
         super.viewWillAppear(animated)
    
         limits = LimitsManager.shared.getLimits()
-        expences = LimitsManager.shared.getExpences()
         
         if DataManager.shared.isNewMonth() {
             UserMessenger.shared.showUserMessage(vc: self, message: "Установите новые ограничения")
         }
-        
-//        print("NEW MONTH IS  - \(DataManager.shared.isNewMonth())")
-        
+                
         updateCategoriesPickerData()
         updateSubcategoryPickerData()
-//обновить инфу об ограничениях
         
     }
     
@@ -79,22 +79,74 @@ class PaymentViewController: UIViewController {
         }
     }
     
+    private func checkLimits() {
+        if let limit = limits.filter({$0.category == selectedCategory}).first {
+            
+            expences = LimitsManager.shared.getExpences()
+            limitView.alpha = 1
+            restTitleLabel.alpha = 1
+            restLabel.alpha = 1
+            
+            let expence = expences.filter({$0.0 == selectedCategory}).first ?? (selectedCategory, 0.0)
+            
+            let rest = limit.value - expence.1
+                   
+            var limitViewColorIndex = rest / limit.value
+                   
+            if limitViewColorIndex > 1 {limitViewColorIndex = 1}
+            if limitViewColorIndex < 0 {limitViewColorIndex = 0}
+            
+            setLimitsViewColorBy(index: limitViewColorIndex)
+            
+            var restToDisplay = rest
+            restTitleLabel.text = "Остаток"
+                   
+            if rest < 0 {
+                restToDisplay = abs(rest)
+                restTitleLabel.text = "Превышено"
+            }
+            restLabel.text = String(restToDisplay) + " " + DataManager.shared.getShortStringCurrency()
+            
+        } else {
+            setNoLimits()
+        }
+        
+    }
+    
+    private func setLimitsViewColorBy(index: Double) {
+        
+        switch index {
+        case 0.0..<0.3:
+            limitView.backgroundColor = .systemRed
+        case 0.3..<0.6:
+            limitView.backgroundColor = .systemOrange
+        case 0.6..<0.75:
+            limitView.backgroundColor = .systemYellow
+        case 0.75...1.0:
+                limitView.backgroundColor = .green
+        default:
+            limitView.backgroundColor = .blue
+        }
+
+    }
+    
+    private func setNoLimits() {
+        limitView.alpha = 0
+        restTitleLabel.alpha = 0
+        restLabel.alpha = 0
+    }
+    
     func addToolBarOnKeyboard()
     {
         
         let textFieldToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 35))
-        
-//        let left = UIBarButtonItem(title: "←", style: .done, target: self, action: #selector(leftButtonDidTap))
-//        left.tintColor = .label
-//        let right = UIBarButtonItem(title: "→", style: .done, target: self, action: #selector(rightButtonDidTap))
-//        right.tintColor = .label
+
         let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let done: UIBarButtonItem = UIBarButtonItem(title: "Готово", style: .done, target: self, action: #selector(doneButtonDidTap))
         done.tintColor = .label
         
         var items = [UIBarButtonItem]()
-//        items.append(left)
-//        items.append(right)
+
         items.append(flexSpace)
         items.append(done)
         
@@ -122,17 +174,6 @@ class PaymentViewController: UIViewController {
         txt.resignFirstResponder()
     }
     
-    @objc func leftButtonDidTap()
-    {
-        //move cursor one position left
-    }
-    
-    @objc func rightButtonDidTap()
-    {
-        //move cursor one position right
-    }
-    
-    
     
     @IBAction func incomeButtonDidTap(_ sender: Any) {
         createPayment(type: .income)
@@ -159,6 +200,7 @@ class PaymentViewController: UIViewController {
             CoreDataManager.shared.savePayment(payment: payment)
             if type == .expence {
                 LimitsManager.shared.updateExpencesAfterPayment(category: selectedCategory, value: currentPaymentValue)
+                checkLimits()
             }
             UserMessenger.shared.showUserMessage(vc: self, message: "Платеж принят")
             
@@ -240,7 +282,7 @@ class PaymentViewController: UIViewController {
                        return
                    }
 
-                   DataManager.shared.addCtegory(title: trimmedTitle)
+                   DataManager.shared.addCategory(category: trimmedTitle)
                    self.updateCategoriesPickerData()
                    self.categoryPicker.selectRow(0, inComponent: 0, animated: true)
                    self.selectedCategory = trimmedTitle
@@ -311,6 +353,7 @@ class PaymentViewController: UIViewController {
         categoryPicker.reloadAllComponents()
         categoryPicker.selectRow(0, inComponent: 0, animated: true)
         selectedCategory = categories[categoryPicker.selectedRow(inComponent: 0)]
+        checkLimits()
     }
     
     private func updateSubcategoryPickerData() {
@@ -331,6 +374,7 @@ extension PaymentViewController: UIPickerViewDelegate {
         switch pickerView {
         case categoryPicker:
             selectedCategory = categories[row]
+            checkLimits()
             updateSubcategoryPickerData()
         case subcategoryPicker:
             selectedSubCategory = subCategories[row]

@@ -148,7 +148,7 @@ class CategoriesViewController: UIViewController {
                         return
                     }
  
-                    DataManager.shared.addCtegory(title: trimmedTitle)
+                    DataManager.shared.addCategory(category: trimmedTitle)
                     self.selectedCategory = ""
                     self.setUnactiveModeForsubCategories()
                     self.updateAndSetNormalModeForCategories(withScroll: true)
