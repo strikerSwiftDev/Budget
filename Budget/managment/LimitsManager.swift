@@ -67,20 +67,6 @@ class LimitsManager {
         
     }
     
-    func updateExpencesAfterPayment(category: String, value: Double) {
-        
-        var newExpenceSum = expenceByCategories.filter() {$0.0 != category}
-        let expences = expenceByCategories.filter(){$0.0 == category}
-        guard let expence = expences.first else {return}
-        
-        let newValue = expence.1 + value
-        let newExpence = (category, newValue)
-        
-        newExpenceSum.append(newExpence)
-        expenceByCategories = newExpenceSum
- 
-    }
-    
     private func reSaveLimits() {
         UserDefaults.standard.removeObject(forKey: limitsUserDefaultKey)
 
@@ -92,6 +78,19 @@ class LimitsManager {
     }
     
 // MARK: OPENS
+    
+    func updateExpencesAfterPayment(category: String, value: Double) {
+       var newExpenceSum = expenceByCategories.filter() {$0.0 != category}
+       let expences = expenceByCategories.filter(){$0.0 == category}
+       guard let expence = expences.first else {return}
+       
+       let newValue = expence.1 + value
+       let newExpence = (category, newValue)
+       
+       newExpenceSum.append(newExpence)
+       expenceByCategories = newExpenceSum
+
+    }
     
     func proceedNewMonth() {
         deleteAllNotRegularLimits()

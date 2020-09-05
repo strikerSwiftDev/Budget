@@ -21,7 +21,7 @@ class FiltersViewController: UIViewController {
     
     private var tableContentArray = [String]()
     private var selectedCategory = ""
-    private let selectAllStr = "< ВСЕ >"
+    private let selectAllStr = Consts.allString
     
     private var useTwoSegments = false
     
@@ -165,7 +165,7 @@ class FiltersViewController: UIViewController {
                 table.tag = 2
                 tableContentArray = DataManager.shared.getSubCategoriesForCategory(category:    selectedCategory)
                 tableContentArray.insert(selectAllStr, at: 0)
-                tableContentArray.insert(Consts.subcategoriesEmptyPlaceholder, at: 1)
+//                tableContentArray.insert(Consts.subcategoriesEmptyPlaceholder, at: 1)
             default:
                 break
             }

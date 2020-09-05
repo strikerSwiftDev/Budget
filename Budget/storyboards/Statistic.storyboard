@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Imc-UU-SWh">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Imc-UU-SWh">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -252,11 +252,19 @@
                                             <action selector="backButtonDidTap:" destination="NCh-7w-i9u" eventType="touchUpInside" id="n6z-rl-D2K"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Подкатегории" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LUH-l4-s1o">
+                                        <rect key="frame" x="14" y="4" width="131" height="23"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemGray2Color" red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="3fk-MR-3xc"/>
+                                    <constraint firstItem="LUH-l4-s1o" firstAttribute="centerY" secondItem="wKW-MG-u7q" secondAttribute="centerY" id="9JN-dj-bjd"/>
                                     <constraint firstItem="dQP-8m-og3" firstAttribute="centerY" secondItem="wKW-MG-u7q" secondAttribute="centerY" id="JP7-L3-yuL"/>
+                                    <constraint firstItem="LUH-l4-s1o" firstAttribute="leading" secondItem="wKW-MG-u7q" secondAttribute="leading" constant="14" id="UV3-ZL-Alg"/>
                                     <constraint firstAttribute="trailing" secondItem="dQP-8m-og3" secondAttribute="trailing" constant="25" id="V41-tn-mmJ"/>
                                 </constraints>
                             </view>
@@ -411,6 +419,9 @@
                         <viewLayoutGuide key="safeArea" id="vnC-TV-5Hb"/>
                     </view>
                     <navigationItem key="navigationItem" title="Статистика" largeTitleDisplayMode="always" id="rMq-GJ-PsH"/>
+                    <connections>
+                        <outlet property="generatorBtn" destination="YBE-OL-XVa" id="JPI-h6-xwk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NNo-uT-rfI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

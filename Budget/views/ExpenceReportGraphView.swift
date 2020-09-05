@@ -35,6 +35,8 @@ class ExpenceReportGraphView: UIView {
         switch DataManager.shared.getFierstWeekDay() {
             case .monday:
                 switch DataManager.shared.getLocale() {
+                    case .ukraine:
+                        weekDays = Consts.weekDaysForMondayUa
                     case .russian:
                         weekDays = Consts.weekDaysForMondayRus
                     case .english:
@@ -43,6 +45,8 @@ class ExpenceReportGraphView: UIView {
             
             case .sunday:
                 switch DataManager.shared.getLocale() {
+                    case .ukraine:
+                        weekDays = Consts.weekDaysForSundayUa
                     case .russian:
                         weekDays = Consts.weekDaysForSundayRus
                     case .english:

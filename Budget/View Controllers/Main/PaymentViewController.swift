@@ -17,8 +17,9 @@ class PaymentViewController: UIViewController {
     @IBOutlet weak var restTitleLabel: UILabel!
 
     
-    private let defaultSubcategory = Consts.subcategoriesEmptyPlaceholder
+//    private let defaultSubcategory = Consts.subcategoriesEmptyPlaceholder
     private let defaultCategory = Consts.categoriesEmptyPlaceholder
+    private let emptySubcategory = Consts.subcategoriesEmptyPlaceholder
     
     private var categories = [String]()
     private var subCategories = [String]()
@@ -68,8 +69,9 @@ class PaymentViewController: UIViewController {
         }
                 
         updateCategoriesPickerData()
-        updateSubcategoryPickerData()
-        
+//        updateSubcategoryPickerData()
+//        print("categories = \(categories)")
+//        print("subCategories = \(subCategories)")
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -353,15 +355,22 @@ class PaymentViewController: UIViewController {
         categoryPicker.reloadAllComponents()
         categoryPicker.selectRow(0, inComponent: 0, animated: true)
         selectedCategory = categories[categoryPicker.selectedRow(inComponent: 0)]
+        updateSubcategoryPickerData()
         checkLimits()
     }
     
+    
+    
     private func updateSubcategoryPickerData() {
+
         subCategories = DataManager.shared.getSubCategoriesForCategory(category: selectedCategory)
-        subCategories.insert(defaultSubcategory, at: 0)
+        if subCategories.isEmpty {
+            subCategories = [emptySubcategory]
+        }
         subcategoryPicker.reloadAllComponents()
         subcategoryPicker.selectRow(0, inComponent: 0, animated: false)
         selectedSubCategory = subCategories[0]
+       
     }
     
     
@@ -375,7 +384,7 @@ extension PaymentViewController: UIPickerViewDelegate {
         case categoryPicker:
             selectedCategory = categories[row]
             checkLimits()
-            updateSubcategoryPickerData()
+//            updateSubcategoryPickerData()
         case subcategoryPicker:
             selectedSubCategory = subCategories[row]
         default:

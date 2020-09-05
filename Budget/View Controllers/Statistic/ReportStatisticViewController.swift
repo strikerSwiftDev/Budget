@@ -75,6 +75,9 @@ class ReportStatisticViewController: UIViewController {
         let nib = UINib(nibName: "MyReportTableViewCell", bundle: nil)
         reportTableView.register(nib, forCellReuseIdentifier: "ReportTableViewCellId")
         
+        reportTableView.allowsSelection = false
+
+        
         reportTableView.tableFooterView = UIView()
     }
     

@@ -42,6 +42,8 @@ class LimitsViewController: UIViewController {
         let nib1 = UINib(nibName: "LimitsEmptyTableViewCell", bundle: nil)
         tableView.register(nib1, forCellReuseIdentifier: "LimitsEmptyTableViewCellID")
         
+        tableView.tableFooterView = UIView()
+        
         tableView.allowsSelection = false
         
     }

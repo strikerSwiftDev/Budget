@@ -26,6 +26,7 @@ enum FirstWeekDay: Int {
 }
 
 enum LocaleIdentificator {
+    case ukraine
     case russian
     case english
 }

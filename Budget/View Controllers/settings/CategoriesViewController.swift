@@ -9,6 +9,8 @@ class CategoriesViewController: UIViewController {
     private let categoriesEmptyPlaceholder = [Consts.categoriesEmptyPlaceholder]
     private let subcategoriesEmptyPlaceholder = [Consts.subcategoriesEmptyPlaceholder]
 
+//    private let
+    
     @IBOutlet weak var categoriesAddButton: UIButton!
     
     @IBOutlet weak var subcategoriesAddButton: UIButton!
@@ -40,7 +42,6 @@ class CategoriesViewController: UIViewController {
         subcategoriesTableView.dragDelegate = self
 
         subcategoriesAddButton.alpha = 0
-        
         
         }
     
@@ -251,7 +252,7 @@ class CategoriesViewController: UIViewController {
 
         }
         
-        let okActionWithSetPaymentsUncategorized = UIAlertAction(title: "Переместить в без категории", style: .default) { (_) in
+        let okActionWithSetPaymentsUncategorized = UIAlertAction(title: "Переместить в \(Consts.subcategoriesUcategorized)", style: .default) { (_) in
                                       
                    DataManager.shared.delete(subcategory: subcategory, inCategory: self.selectedCategory, row: row)
                 CoreDataManager.shared.setPaymentsAsUncatgorizedFor(subcategory: subcategory, inCategory: self.selectedCategory)
@@ -360,6 +361,9 @@ extension CategoriesViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        if tableView == subcategoriesTableView, self.subcategories[indexPath.row] == Consts.subcategoriesUcategorized {
+            return false
+        }
         return true
     }
     
@@ -371,7 +375,13 @@ extension CategoriesViewController: UITableViewDataSource {
             setUnactiveModeForsubCategories()
             updateAndSetNormalModeForCategories()
         case subcategoriesTableView:
-            DataManager.shared.moveSubcategoryFor(category: selectedCategory, fromPosition: sourceIndexPath.row, toPosition: destinationIndexPath.row)
+            
+            var targetPos = destinationIndexPath.row
+            if targetPos == 0 {
+                targetPos = 1
+            }
+            
+            DataManager.shared.moveSubcategoryFor(category: selectedCategory, fromPosition: sourceIndexPath.row, toPosition: targetPos)
             updateSubcateoriesTableFor(category: selectedCategory, andShowAddButton: true)
         default:
             break
@@ -385,6 +395,10 @@ extension CategoriesViewController: UITableViewDataSource {
             setUnactiveModeForsubCategories()
         }
         
+        if tableView == subcategoriesTableView, self.subcategories[indexPath.row] == Consts.subcategoriesUcategorized {
+            return nil
+        }
+        
         let action = UIContextualAction(style: .normal, title: "Удалить") { [weak self] (action, view, handler) in
             
             switch tableView {
@@ -392,7 +406,8 @@ extension CategoriesViewController: UITableViewDataSource {
                 self!.showDeleteCategoryAlert(category: self!.categories[indexPath.row], row: indexPath.row)
                 
             case self!.subcategoriesTableView:
-                self!.showDeleteSubcategoryAlert(subcategory: self!.subcategories[indexPath.row], row: indexPath.row)
+                let subcategory = self!.subcategories[indexPath.row]
+                self!.showDeleteSubcategoryAlert(subcategory: subcategory, row: indexPath.row)
             default :
                 break
             }

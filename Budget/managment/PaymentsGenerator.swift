@@ -20,11 +20,11 @@ class PaymentsGenerator  {
             
             let value = Int.random(in: 0...1000)
             
-            let category = categories.randomElement() ?? Consts.categoriesEmptyPlaceholder
+            guard let category = categories.randomElement() else {continue}
             
-            var subcategories = DataManager.shared.getSubCategoriesForCategory(category: category)
-            subcategories.insert(Consts.subcategoriesEmptyPlaceholder, at: 0)
-            let subcategory = subcategories.randomElement() ?? Consts.subcategoriesEmptyPlaceholder
+            let subcategories = DataManager.shared.getSubCategoriesForCategory(category: category)
+            
+            guard let subcategory = subcategories.randomElement() else {continue}
             
             let typeIndex = Int.random(in: 0...1)
             var type = PaymentType.overal
@@ -46,7 +46,7 @@ class PaymentsGenerator  {
             CoreDataManager.shared.savePayment(payment: payment)
             
         }
-            
+        LimitsManager.shared.initLimitsAndExpences()
         UserDefaults.standard.set(minimalDate, forKey: "theVeryFirstDate")
         
     }

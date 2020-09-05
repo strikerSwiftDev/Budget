@@ -299,7 +299,7 @@ class CategoriesStatViewController: UIViewController {
         tableView.reloadData()
         hideBackButton()
         storedCategoriesObjects = []
-        
+        tableView.allowsSelection = true
     }
     
     
@@ -318,7 +318,7 @@ extension CategoriesStatViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        tableView.deselectRow(at: indexPath, animated: true)
+        
         
         let category = objects[indexPath.row].name
         
@@ -327,6 +327,7 @@ extension CategoriesStatViewController: UITableViewDelegate {
             storedCategoriesObjects = objects
             updateDataForSubcategories(category: category)
             showBackButton()
+            tableView.allowsSelection = false
         } else if tableViewMode == .categories {
             UserMessenger.shared.showUserMessage(vc: self, message: "Нет подкатегорий")
         }

@@ -83,7 +83,7 @@ class DataManager {
 
     func addCategory(category: String){
         categories.insert(category, at: 0)
-        subCategories[category] = []
+        subCategories[category] = [Consts.subcategoriesUcategorized]
         LimitsManager.shared.addNewExpences(category: category)
 
     }
@@ -122,7 +122,7 @@ class DataManager {
     
     func addSubCtegory(title: String, forCategory: String) {
         if var subcategories = subCategories[forCategory] {
-            subcategories.insert(title, at: 0)
+            subcategories.insert(title, at: 1)
             subCategories[forCategory] = subcategories
         }
 
@@ -229,8 +229,10 @@ class DataManager {
     
     func setLocale(newLocale:String) {
         
-        if newLocale.hasPrefix("ru") || newLocale.hasPrefix("uk")  {
+        if newLocale.hasPrefix("ru")   {
             locale = .russian
+        } else if newLocale.hasPrefix("uk") {
+            locale = .ukraine
         } else {
             locale = .english
         }
@@ -281,8 +283,19 @@ class DataManager {
     }
     
     private func initializeFirtLaunch () {
-        categories = Consts.defaultCategories
-        subCategories = Consts.defaultSubCategories
+        
+        
+        switch getLocale() {
+        case .ukraine:
+            categories = Consts.defaultCategoriesUa
+            subCategories = Consts.defaultSubCategoriesUa
+        case .russian:
+            categories = Consts.defaultCategoriesRus
+            subCategories = Consts.defaultSubCategoriesRus
+        case .english:
+            categories = Consts.defaultCategoriesEn
+            subCategories = Consts.defaultSubCategoriesEn
+        }
     }
     
     func loadSimpleData() {

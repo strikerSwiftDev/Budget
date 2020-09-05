@@ -35,7 +35,7 @@ class GraphReportViewController: UIViewController {
         tableView.tableFooterView = UIView()
         tableView.dragInteractionEnabled = true
         tableView.dragDelegate = self
-                
+        tableView.allowsSelection = false
         activityIndicator.stopAnimating()
         
     }
